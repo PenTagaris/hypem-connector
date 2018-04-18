@@ -1,0 +1,445 @@
+Return-Path: <jstnchristian+caf_=hype-stack=christiannet.info@gmail.com>
+Received: from mail-io0-f171.google.com (mail-io0-f171.google.com [209.85.223.171])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id ud9dqets5grt9spobgcbonsfh1kjf21oqn65so01
+ for hype-stack@christiannet.info;
+ Fri, 16 Mar 2018 20:24:14 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.223.171 as permitted sender) client-ip=209.85.223.171; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f171.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.171 as permitted sender) client-ip=209.85.223.171; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f171.google.com;
+ dkim=pass header.i=@hypem.com;
+ dkim=pass header.i=@gmail.mcsv.net;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFHOUp6dWtLbnRUZVZ3VmZjejkyRkZlVVUyNm9nRThLOUlKVmRjbFVsNU9ubjQzMW5uSWJBYmFzZVVUamhjTXh1cnZ4cVZyUWVBZ1VKSlE4QndieXVhM2hOTVNDbGRuQ3JnN0pwWWY4YXJFWUoxb0pXRzhsTUppNGU0eE9wQ3BtazV6TE4zV3BUNWNvbWtrNFNPVU4ycVBmL3o2eHBJV093QVNsMk95WHFHUTRJdmVRYmlWK29BVXprRE5zdnNXYjdNS0JsdU4vYlZXNkRDaWgxYm9UdXd0NHZ5WTFLWnZFeGViRks2a0JqV3Q5RWVYZE1rd1RGSTdkQnZwTXl5UEdQZ0h1cUlhNm5pZ2plK2ZOTW5SVUpzZFdjdHZKcGNxYmNBTW96cXoydkhGMjJnNW5iTGVMWnRYblNwSDU2NmdSa1ZpaXo4NTBVWlg0Q1MwajE1emlDQnQ=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=X928aS07L0JBId0JWIzg45za0lgGnZiny4stuFBzJII99kVHg3EK4dfZ2b7KazAoEmECa+lqwI17+9s64o2IsYgHgCkliUB2TjTljWexScHthlhPAqNPdqyu5o6Q89AKkQDACSMbD+bpbXjbvF9+VB2z90f0QjGB1Y5lQis1ywA=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1521231855; v=1; bh=VrBYUNRHbHIgsygOugOy8+VI3bfqQJtVM8TnV8PttwE=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-io0-f171.google.com with SMTP id f1so14068518iob.0
+        for <hype-stack@christiannet.info>; Fri, 16 Mar 2018 13:24:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :subject:from:reply-to:to:date:message-id:feedback-id:list-id
+         :precedence:list-unsubscribe:list-unsubscribe-post:mime-version;
+        bh=uyDvMgBxuLW6gJI/nGWxS194fJ4bHMdtnElusTCdoVg=;
+        b=XMCC/jOB/LOe4E+p1XvswA/sF3gJLDFvj5y+ep8Hj1FdpospCKLjotgb8dRyHBm+9m
+         r5742/NwREUExZXnrxmr/RP2EL2i+0H5NyTaaFc2dzH/Q73gUEUdXkE1luYLbG0X/Ys8
+         k83nehdIhSF2OZs0HLAvi6jYGCwRpvY2hwYd4S6zxuGOSvOBmMr1QRH9UeeZq/irSjwM
+         UDHOGV+30mJGw1dws9PqIQZM2FU0noh0+25B83hAhV0YIyKT7RRi1LWtj5Mn7EaFSZpp
+         wxwDlNdXrKYCxSzSEi4ZgySZuLtzTKYPYE5v3Hl4ekECuOQRKhCOyy9T4Kgd6mQRINl6
+         ctwQ==
+X-Gm-Message-State: AElRT7FLxaZls0ggKUTZVdCinUQznX+hbxoy7U5f5b360tBcTi0dVjNN
+	33eg4apmm4TY0/ZiNKqKOSNAWLNtG0rZPNL5SIesZT2AqBjdWZE=
+X-Received: by 10.107.3.71 with SMTP id 68mr3567260iod.66.1521231854039;
+        Fri, 16 Mar 2018 13:24:14 -0700 (PDT)
+X-Forwarded-To: hype-stack@christiannet.info
+X-Forwarded-For: jstnchristian@gmail.com hype-stack@christiannet.info
+Delivered-To: jstnchristian@gmail.com
+Received: by 10.2.61.194 with SMTP id n185csp1196948jan;
+        Fri, 16 Mar 2018 13:24:12 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELud26dXiwno0mBkyPskMBrWDf1xfER/h5DGQdNPuQgfyITPNXFpagUmkSXEgivVYIQ5CT/j
+X-Received: by 10.13.214.209 with SMTP id y200mr2018372ywd.406.1521231852219;
+        Fri, 16 Mar 2018 13:24:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521231852; cv=none;
+        d=google.com; s=arc-20160816;
+        b=c43SNaKKzhnaueB7kfoyPIvKrjZ+YWelcaqszaJDjBvazo+4QDBRzw4/9gGpvjHeJ6
+         e6d7W1nmsUPyOpeh7hTgFSNMSYpKIizE0JwY2cx+89ft8dH8Hqu1G2b0a70q7l3xnJ3x
+         86DtNW+n6xBIeIClxTI/Y/gKyMQsuMMS406+5j52DuLVTTv9AZRDRECR12N6pVKjjcsw
+         rz1ptU36fY68jn4NU0vpOgNK4GMdFDZjktulVlzc6f/X/3UkSH+P5rtpplL0vhgLZGBv
+         S9Be2jaZmEE9duXx8wPyeWKv8tjUNMWBNPrpnjRCib2oP0XJB8YsqR431buWtGVTwQad
+         0BIQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:precedence
+         :list-id:feedback-id:message-id:date:to:reply-to:from:subject
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=uyDvMgBxuLW6gJI/nGWxS194fJ4bHMdtnElusTCdoVg=;
+        b=O+wt+pfCjVpN/4Mjo7Tfc6RbTQX2PyNjRmgLNPVE+wipJ0xuHTtqzIneUGAJUIY7iO
+         r7ryHYTAwV8jXX7JP8HDE438QaQCho6VSYpKHuKq4yPIWasV5ILbPcdXviFip1nnqycI
+         MgmmirW/oPo8IG86m6WJ4gq8wCU9HiIeGBlWgjfCp22aa6T5oSxa/P7RhdFnCKuFvuGb
+         FcVFdGnacMdF/EKanq4y+9GFn4SV09/+sVgSAvyu63Hbb7H3M3Mz9LRYNZgNbT7U/6q2
+         5IO5hodRs6V52OHAjmoLDdeKcrWVZBLrFWTdxwGWLjxkEVKvUsusYoyXjqA3ihaZR1x3
+         hcpw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=ZNzMpEZK;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=FQGntjSD;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net designates 205.201.130.174 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+Return-Path: <bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net>
+Received: from mail174.wdc02.mcdlv.net (mail174.wdc02.mcdlv.net. [205.201.130.174])
+        by mx.google.com with ESMTPS id c3si1620121ywa.434.2018.03.16.13.24.11
+        for <jstnchristian@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Mar 2018 13:24:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net designates 205.201.130.174 as permitted sender) client-ip=205.201.130.174;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=ZNzMpEZK;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=FQGntjSD;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net designates 205.201.130.174 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=hypem.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=hello@hypem.com;
+ bh=uyDvMgBxuLW6gJI/nGWxS194fJ4bHMdtnElusTCdoVg=;
+ b=ZNzMpEZKYelqfwR88U5ytZjb51AXyUL+ZT3OO8KtlxR+dztAhGGH5/SfyWMkOdLOuVT7gfp8vdff
+   RxyF1gvMiH47/BnCARvBeAnUtsDxgkBBGo4uP2iGvWk48/vO7ll1VH84gM3vrpPoKK7frL2j0qAJ
+   NdLH7GXieKI5RYftKKI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=uyDvMgBxuLW6gJI/nGWxS194fJ4bHMdtnElusTCdoVg=;
+ b=FQGntjSDT8F1CJ/+wq9Igeky5GIjHCmJdNxhnOrJo+eTS33Fk+ELrQxsma+8RiCqZjEjLh3t1vq+
+   187XuxlyHcci/td3Cl25Ai3Pt0svOzd3guI3UIcKkc8XQ2FEdU1kxNBymFUkVjNPHyOXn4yyJXv8
+   Hio/nPr5SOgeN0JMh70=
+Received: from (127.0.0.1) by mail174.wdc02.mcdlv.net id hlgjuo2ddl4i for <jstnchristian@gmail.com>; Fri, 16 Mar 2018 20:23:01 +0000 (envelope-from <bounce-mc.us7_18415043.807857-jstnchristian=gmail.com@mail174.wdc02.mcdlv.net>)
+Subject: =?utf-8?Q?=F0=9F=92=8C=C2=A0Stack=20=E2=84=96179=20will=20be=20there=20for=20you?=
+From: =?utf-8?Q?Hype=20Machine?= <hello@hypem.com>
+Reply-To:  <us7-874bbefcd0-128039a5d6@conversation01.mailchimpapp.com>
+To: <jstnchristian@gmail.com>
+Date: Fri, 16 Mar 2018 20:23:01 +0000
+Message-ID: <e9e17a06a5cc8fcbf10aaddf3.6626bc0426.20180316202203.d4c0e092fe.56c64238@mail174.wdc02.mcdlv.net>
+X-Mailer: MailChimp Mailer - **CIDd4c0e092fe6626bc0426**
+X-Campaign: mailchimpe9e17a06a5cc8fcbf10aaddf3.d4c0e092fe
+X-campaignid: mailchimpe9e17a06a5cc8fcbf10aaddf3.d4c0e092fe
+X-Report-Abuse: Please report abuse for this campaign here: http://www.mailchimp.com/abuse/abuse.phtml?u=e9e17a06a5cc8fcbf10aaddf3&id=d4c0e092fe&e=6626bc0426
+X-MC-User: e9e17a06a5cc8fcbf10aaddf3
+Feedback-ID: 18415043:18415043.807857:us7:mc
+List-ID: e9e17a06a5cc8fcbf10aaddf3mc list <e9e17a06a5cc8fcbf10aaddf3.220065.list-id.mcsv.net>
+Precedence: bulk
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Accounttype: pd
+List-Unsubscribe: <https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=d4c0e092fe>, <mailto:unsubscribe-mc.us7_e9e17a06a5cc8fcbf10aaddf3.d4c0e092fe-6626bc0426@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-mcda: FALSE
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_151840866"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_151840866
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+http://hypem.com/stackhttp://hypem.com/stack/179?via=3Demail
+Thanks for supporting us!
+Stream five of the week's most interesting tracks on Hype Machine (https:/=
+/hypem.com/stack/179?via=3Demail) .
+https://hypem.com/stack/179?via=3Demail A Beacon School - Algernon (https:=
+//hypem.com/stack/179?via=3Demail)
+Brooklyn=E2=80=99s Patrick J. Smith has played in projects like Modern Riv=
+als and Perfect Strangers=2C but this is his first solo outing (via Grind=
+ Select). He tells The Fader (http://www.thefader.com/2018/02/14/a-beacon-=
+school-algernon) his blissfully layered guitar/vocal work is the result of=
+ following his creative impulses.
+
+https://hypem.com/stack/179?via=3Demail Tiana Major9 - Levee (Let it Break=
+) (https://hypem.com/stack/179?via=3Demail)
+Hailing from East London=2C Tiana Major9 has a handful of tracks and one m=
+usic video (https://youtu.be/J8Q3fc_X8jw) . The highlight=2C "Levee (Let I=
+t Break)=2C" underscores soulful vocals with smooth jazz instrumentation=
+=2C flipping to a rap verse in its final stretch.
+
+https://hypem.com/stack/179?via=3Demail Ross From Friends - John Cage (Edi=
+t) (https://hypem.com/stack/179?via=3Demail)
+Top of the lo-fi house class (Stack =E2=84=96134 (https://hypem.com/stack/=
+134) )=2C British DJ/producer Felix Weatherall=2C aka Ross From Friends=2C=
+ signs to Flying Lotus=E2=80=99 Brainfeeder imprint for a new EP. Breezy=
+=2C hypnotic=2C but the question remains: will he ever get back with Rache=
+l?
+
+https://hypem.com/stack/179?via=3Demail Dear Nora - Sunset On Humanity (ht=
+tps://hypem.com/stack/179?via=3Demail)
+Following the reissue of their seminal 2004 LP=2C Portland's Dear Nora ret=
+urn with their first album in ten years. An oft-cited influence on some of=
+ today's emerging indie-pop songwriters (like Girlpool)=2C Katy Davidson s=
+ounds as vital as ever in 2018.
+
+https://hypem.com/stack/179?via=3Demail Kerem Akdag - Find Yourself (https=
+://hypem.com/stack/179?via=3Demail)
+For his debut LP=2C released last week on Dimension Recordings=2C Istanbul=
+-based producer Kerem Akdag serves up a "deftly executed blend of jazz=2C=
+ house=2C broken beat and soul...old styles created in new and exciting wa=
+ys=2C" says Twistedsoul (https://twistedsoulmusic.org/2018/02/28/kerem-akd=
+ag-find-yourself-ts-premiere/) .
+
+https://hypem.com/premiere/erica+eso The new album from New York City art-=
+pop ensemble Erica Eso (https://hypem.com/premiere/erica+eso) =2C out on N=
+NA Tapes.
+
+Keeping up with Portals (https://hypem.com/site/portals/17225) as always=
+=E2=80=94we found Tiana Major9 (above) in December's mix=E2=80=94here's th=
+eir latest (https://soundcloud.com/prtls/monthly-mix-february-2018) featur=
+ing Stack favorites Yuno=2C Katie Dey=2C Hovvdy=2C and more.
+
+Pitchfork (https://pitchfork.com/features/article/how-a-group-of-journalis=
+ts-turned-hip-hop-into-a-literary-movement/) on how a group of journalists=
+ in the '80s and '90s turned hip-hop into a literary movement:
+
+"Rather than stick to the rigged constraints of traditional music criticis=
+m=2C writers used the music as an entry point into discussing race=2C iden=
+tity=2C youth=2C and broader culture."
+
+Thanks for listening!
+
+- Dave & Team Hype Machine
+
+http://hypem.com/anthony http://hypem.com/zoya http://hypem.com/stadiumssh=
+rines
+By the way=2C we've also made Spotify (https://open.spotify.com/user/hypem=
+/playlist/0uBPGiDY93DpfRBAzTfkTp) and SoundCloud (https://soundcloud.com/h=
+ypem/sets/stack) playlists with all of the recent Stack picks. Check them=
+ out=2C though the newest tracks are still only in this email.
+------------------------------------------------------------
+
+ps. If you're feeling this=2C forward it on :)
+
+This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.
+Unsubscribe (https://hypem.us7.list-manage.com/unsubscribe?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3D28a82e4150&e=3D6626bc0426&c=3Dd4c0e092fe) with one click=
+=2E
+--_----------=_MCPart_151840866
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www=
+=2Ew3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+  <head>
+    <title>=F0=9F=92=8C=C2=A0Stack =E2=84=96179 will be there for you</tit=
+le>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-=
+8">
+
+  <style type=3D"text/css">
+=09=09.cta{
+=09=09=09font-size:20px;
+=09=09=09display:block;
+=09=09=09padding:20px 15px;
+=09=09=09background-color:#83c441;
+=09=09=09color:#ffffff;
+=09=09=09text-decoration:none;
+=09=09=09width:400px;
+=09=09=09text-align:center;
+=09=09}
+=09=09.quote{
+=09=09=09font-weight:bold;
+=09=09}
+=09@media only screen and (max-width: 480px){
+=09=09.headerContent=2C.mainContent{
+=09=09=09font-size:30px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.footerContent{
+=09=09=09font-size:20px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.cta{
+=09=09=09font-size:36px !important;
+=09=09=09padding:25px 20px !important;
+=09=09=09width:500px !important;
+=09=09}
+
+}</style></head>
+  <body bgcolor=3D"#fff" link=3D"#0063dc" alink=3D"#0063dc" vlink=3D"#0063=
+dc" style=3D"text-align: left;">
+    <div style=3D"width:100%;background-color:#fff;padding:20px 0 0 0;">
+      <center>
+        <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"6=
+40">
+          <tr>
+            <td style=3D"padding-bottom:30px;text-align:left;" class=3D"he=
+aderContent">
+              <center>
+                <table width=3D"640" cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0">
+                  <tr>
+                    <td style=3D"text-align:left;font-family:Helvetica=2C=
+ Arial=2C sans-serif;font-size:16px;color:#111;border-bottom:0;" colspan=
+=3D"2">
+                      <a target=3D"_blank" href=3D"https://hypem.us7.list-=
+manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3De379257a31&e=3D=
+6626bc0426"><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De=
+9e17a06a5cc8fcbf10aaddf3&id=3D3b7eeb788e&e=3D6626bc0426"><img border=3D"0=
+" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/bb8=
+8d2dc-c20f-4d19-b5f3-3a17ea6fd9c7.png" style=3D"margin-top: 0px;" width=3D=
+"640"></a></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style=3D"background-color:#fff;color:#222;font-siz=
+e:16px;line-height:150%;padding:0;text-align:left;font-family:Helvetica=2C=
+ Arial=2C sans-serif;border-bottom:0;border-top:0;" colspan=3D"2" class=3D=
+"mainContent">
+<p style=3D"padding:10px;background-color:#83c441;color:#000;">Thanks for=
+ supporting us!</p>
+<p>Stream five of the week&#39;s most interesting tracks on&nbsp;<a href=
+=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10a=
+addf3&id=3Dcde038e5db&e=3D6626bc0426">Hype Machine</a>.</p>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3Dbdb9cf8315&e=3D6626bc0426" target=3D"_blank"><img align=
+=3D"left" height=3D"71" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8f=
+cbf10aaddf3/images/26d95155-63cc-4da4-8f52-8cef9ceac8e9.jpg" style=3D"marg=
+in-top:0px; margin-right:15px; margin-bottom:60px;" width=3D"76"></a> <str=
+ong><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3D001e1b7cbe&e=3D6626bc0426" style=3D"color:#000;text=
+-decoration:none;" target=3D"_blank">A Beacon School - Algernon</a></stron=
+g><br>
+Brooklyn&rsquo;s Patrick J. Smith has played in projects like Modern Rival=
+s and Perfect Strangers=2C but this is his first solo outing (via Grind Se=
+lect). He tells <a href=3D"https://hypem.us7.list-manage.com/track/click?u=
+=3De9e17a06a5cc8fcbf10aaddf3&id=3D0e042bed94&e=3D6626bc0426">The Fader</a=
+> his blissfully layered guitar/vocal work is the result of following his=
+ creative impulses.<br>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3Dec563b66b9&e=3D6626bc0426" target=3D"_blank"><img align=
+=3D"left" height=3D"71" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8f=
+cbf10aaddf3/images/26d95155-63cc-4da4-8f52-8cef9ceac8e9.jpg" style=3D"marg=
+in-top:0px; margin-right:15px; margin-bottom:20px;" width=3D"76"></a> <str=
+ong><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3Daae14932ac&e=3D6626bc0426" style=3D"color:#000;text=
+-decoration:none;" target=3D"_blank">Tiana Major9 - Levee (Let it Break)</=
+a></strong><br>
+Hailing from East London=2C Tiana Major9 has a handful of tracks and one <=
+a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8f=
+cbf10aaddf3&id=3Ddd18587111&e=3D6626bc0426">music video</a>. The highligh=
+t=2C &quot;Levee (Let It Break)=2C&quot; underscores soulful vocals with s=
+mooth jazz instrumentation=2C flipping to a rap verse in its final stretch=
+=2E<br>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D852a1eb106&e=3D6626bc0426" target=3D"_blank"><img align=
+=3D"left" height=3D"71" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8f=
+cbf10aaddf3/images/26d95155-63cc-4da4-8f52-8cef9ceac8e9.jpg" style=3D"marg=
+in-top:0px; margin-right:15px; margin-bottom:60px;" width=3D"76"></a> <str=
+ong><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3D9b46d94d14&e=3D6626bc0426" style=3D"color:#000;text=
+-decoration:none;" target=3D"_blank">Ross From Friends - John Cage (Edit)<=
+/a></strong><br>
+Top of the lo-fi house class (<a href=3D"https://hypem.us7.list-manage.com=
+/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Dbb0345097d&e=3D6626bc0426=
+">Stack =E2=84=96134</a>)=2C British DJ/producer Felix Weatherall=2C aka R=
+oss From Friends=2C signs to Flying Lotus=E2=80=99 Brainfeeder imprint for=
+ a new EP. Breezy=2C hypnotic=2C but the question remains: will he ever ge=
+t back with Rachel?<br>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D05a20c2b6d&e=3D6626bc0426" target=3D"_blank"><img align=
+=3D"left" height=3D"71" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8f=
+cbf10aaddf3/images/26d95155-63cc-4da4-8f52-8cef9ceac8e9.jpg" style=3D"marg=
+in-top:0px; margin-right:15px; margin-bottom:60px;" width=3D"76"></a> <str=
+ong><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3Ddeaead9314&e=3D6626bc0426" style=3D"color:#000;text=
+-decoration:none;" target=3D"_blank">Dear Nora - Sunset On Humanity</a></s=
+trong><br>
+Following the reissue of their seminal 2004 LP=2C Portland&#39;s Dear Nora=
+ return with their first album in ten years. An oft-cited influence on som=
+e of today&#39;s emerging indie-pop songwriters (like Girlpool)=2C Katy Da=
+vidson sounds as vital as ever in 2018.<br>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D256fd245d1&e=3D6626bc0426" target=3D"_blank"><img align=
+=3D"left" height=3D"71" src=3D"http://gallery.mailchimp.com/e9e17a06a5cc8f=
+cbf10aaddf3/images/26d95155-63cc-4da4-8f52-8cef9ceac8e9.jpg" style=3D"marg=
+in-top:0px; margin-right:15px; margin-bottom:60px;" width=3D"76"></a> <str=
+ong><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3D9f7d7db3fe&e=3D6626bc0426" style=3D"color:#000;text=
+-decoration:none;" target=3D"_blank">Kerem Akdag - Find Yourself</a></stro=
+ng><br>
+For his debut LP=2C released last week on Dimension Recordings=2C Istanbul=
+-based producer Kerem Akdag serves up a &quot;deftly executed blend of jaz=
+z=2C house=2C broken beat and soul...old styles created in new and excitin=
+g ways=2C&quot; says <a href=3D"https://hypem.us7.list-manage.com/track/cl=
+ick?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D1aa253979c&e=3D6626bc0426">Twisted=
+soul</a>.<br>
+<br>
+<img align=3D"none" height=3D"48" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/422e504f-b469-4bb5-84b4-28bd9d7439dc.png" st=
+yle=3D"width: 640px; height: 48px; margin: 0px;" width=3D"640"><br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3Dfab057b013&e=3D6626bc0426"><img class=3D"premiere-image=
+" src=3D"https://artwork.hypem.com/premieres/crop_featured/eso.jpg" style=
+=3D"width: 640px; margin: 0px;" width=3D"640"></a> The new album from New=
+ York City art-pop ensemble <a href=3D"https://hypem.us7.list-manage.com/t=
+rack/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D3bf67c3d81&e=3D6626bc0426">=
+Erica Eso</a>=2C out on NNA Tapes.<br>
+<br>
+<img align=3D"none" height=3D"48" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/db6dcec6-0816-44a7-a3d9-be10b7cfd501.png" st=
+yle=3D"width: 640px; height: 48px; margin: 0px;" width=3D"640"><br>
+Keeping up with <a href=3D"https://hypem.us7.list-manage.com/track/click?u=
+=3De9e17a06a5cc8fcbf10aaddf3&id=3D92a0b260bf&e=3D6626bc0426">Portals</a>=
+ as always&mdash;we found Tiana Major9 (above) in December&#39;s mix&mdash=
+;here&#39;s their <a href=3D"https://hypem.us7.list-manage.com/track/click=
+?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D33f7361253&e=3D6626bc0426">latest</a>=
+ featuring Stack favorites Yuno=2C Katie Dey=2C Hovvdy=2C and more.<br>
+<br>
+<img align=3D"none" height=3D"48" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/b2241785-cbab-4c56-bd9c-b894477b81d7.png" st=
+yle=3D"width: 640px; height: 48px; margin: 0px;" width=3D"640"><br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D0e89c94628&e=3D6626bc0426">Pitchfork</a> on how a group=
+ of journalists in the &#39;80s and &#39;90s turned hip-hop into a literar=
+y movement:<br>
+<br>
+<span class=3D"quote" style=3D"font-weight: bold;">&quot;Rather than stick=
+ to the rigged constraints of traditional music criticism=2C writers used=
+ the music as an entry point into discussing race=2C identity=2C youth=2C=
+ and broader culture.&quot;</span><br>
+<br>
+Thanks for listening!<br>
+<br>
+- Dave &amp; Team Hype Machine
+<p><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5=
+cc8fcbf10aaddf3&id=3D46cfb57e27&e=3D6626bc0426" target=3D"_blank"><img he=
+ight=3D"40" src=3D"https://artwork.hypem.com/stack/anthony.jpg" style=3D"b=
+ackground-color:#666;" width=3D"40"></a> <a href=3D"https://hypem.us7.list=
+-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D7e7edcc6c6&e=3D=
+6626bc0426" target=3D"_blank"><img height=3D"40" src=3D"https://artwork.h=
+ypem.com/stack/zoya.jpg" style=3D"background-color:#666;" width=3D"40"></a=
+> <a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3Df64d65e164&e=3D6626bc0426" target=3D"_blank"><img hei=
+ght=3D"40" src=3D"https://artwork.hypem.com/stack/dave.jpg" style=3D"backg=
+round-color:#666;" width=3D"40"></a></p>
+By the way=2C we&#39;ve also made <a href=3D"https://hypem.us7.list-manage=
+=2Ecom/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D2f3cf2a8ed&e=3D=
+6626bc0426" target=3D"_blank">Spotify</a> and <a href=3D"https://hypem.us7.list-=
+manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D0b8696d03e&e=3D=
+6626bc0426" target=3D"_blank">SoundCloud</a> playlists with all of the rec=
+ent Stack picks. Check them out=2C though the newest tracks are still only=
+ in this email.
+
+<hr style=3D"height: 2px; color: #83c441; background-color: #83c441;border=
+:0;">
+<p>ps. If you&#39;re feeling this=2C forward it on :)</p>
+</td>
+                </tr>
+              </table>
+            </center>
+            <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-top:3px solid #85C442;">
+              <tr>
+                <td style=3D"font-size:14px;line-height:150%;font-family:H=
+elvetica=2C Arial=2C sans-serif;color:#111;text-align:left;" class=3D"foot=
+erContent"><p>This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.<br>
+                                                <a href=3D"https://hypem.u=
+s7.list-manage.com/unsubscribe?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D28a82e41=
+50&e=3D6626bc0426&c=3Dd4c0e092fe">Unsubscribe</a> with one click.</p></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </center>
+</div>
+<img src=3D"https://hypem.us7.list-manage.com/track/open.php?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3Dd4c0e092fe&e=3D6626bc0426" height=3D"1" width=3D"1"=
+></body>
+</html>
+--_----------=_MCPart_151840866--
