@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/justin/Dropbox/Code/hypem-connector"
+VIRTUAL_ENV="/home/justin/Dropbox/Code/python/hypem-connector"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

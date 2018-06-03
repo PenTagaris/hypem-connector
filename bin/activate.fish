@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/justin/Dropbox/Code/hypem-connector"
+set -gx VIRTUAL_ENV "/home/justin/Dropbox/Code/python/hypem-connector"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
