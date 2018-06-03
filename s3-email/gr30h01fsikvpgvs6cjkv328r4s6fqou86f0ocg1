@@ -1,0 +1,332 @@
+Return-Path: <jstnchristian+caf_=hype-stack=christiannet.info@gmail.com>
+Received: from mail-io0-f174.google.com (mail-io0-f174.google.com [209.85.223.174])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id gr30h01fsikvpgvs6cjkv328r4s6fqou86f0ocg1
+ for hype-stack@christiannet.info;
+ Thu, 26 Apr 2018 18:36:45 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.223.174 as permitted sender) client-ip=209.85.223.174; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f174.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.174 as permitted sender) client-ip=209.85.223.174; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f174.google.com;
+ dkim=pass header.i=@gmail.mcsv.net;
+ dkim=pass header.i=@hypem.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFHOHh3OUM3cUVEQVZ6Si9EZ2ljK2VXZlV1a3ErWHpWZFBuVkxnVDVHV0FBS0VZNVorYjVuY2lWM21SRnJVWFR3YnlqQmdqeVlySnROenFDWEc0Z0l2ZEcza1l2SnhueDRQcm41NkM3bWZZbGVDdGlyUk5DMjZhamltRDVleUlpWEFQMFBRazVOVkk4ekloVTRIWHVxblZMdWh6WnVQdWdEVkx3MXMybXl2dm1HMGRHV1paV2lVSkIzR1VOaThvNXJ3cjFIY1djeElDcW1ncEhYVlRiRE1qZ29mY1lPVHJ3azlFN21vUHhnRS8xdTh1aHh3b0lIM0I5Ym9TUFQxWjJqVWtkcnNVNGRCWHlaSlpSaU5VeWVmdHIyaVdJc1dPNkV1dlMwZmhMVzhnZU1TeW5ZMUI4ekNnMnlWWGwyMXNXbGYxV3NyN1ZnR3pFUXdoY0tuenlMVTg=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=P/IZ3IXlnR1INsTu79gyHguee047SB1CLbp+zwPHGdRe8LJpaSYhCyhEGY9sCSK0ioivh5qIGGccI0RHUKbtVsSPng4x836remAsjc41mmFNeRN9F53K01JLpBSvkTGBvxZqoniqh7BiFUBXF7oIuD2Tm7OQfHTdUGOC4+ZL98E=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1524767805; v=1; bh=JfIDqpvsB1OLRKyg9ecrNiVykJ9vmanFzH4YRYy6gB8=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-io0-f174.google.com with SMTP id r9-v6so16165640iod.6
+        for <hype-stack@christiannet.info>; Thu, 26 Apr 2018 11:36:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :subject:from:reply-to:to:date:message-id:feedback-id:list-id
+         :precedence:list-unsubscribe:list-unsubscribe-post:mime-version;
+        bh=dTl0QJshDsYLxBPUKMAvf0N1Hpmho8bz43aE4e+31kw=;
+        b=G4S7i4lhVUKAAN/8SjYLFBsJ7LQhQDo7dh5k4k2Q3SgHLc9BdZPcM5tKx0Csx1pzIe
+         i08NEg12B6t3Ls7gXIr+0XQHbBloX655080mUq2uO61zWIDTtSjRQRTgetf+uz8hcPwm
+         3443QQcIvqpmrgMXZG5+NSujz5+jvVwanblfNtP8zZSbmylI3y4fpbQJLsl0W0JDlArt
+         bJkCzAFeFAgnXusyShgsPKkLmNuqNMm5X0P0Ia+TdKTITf2Ij27QrmuHyYxa9oFiFo7X
+         jE3BIwUrH1P+IoRUacEeUgpEw0BplCfUR92DnFLlghIRnNsEC4x44QU1LmA0N7ewN8lk
+         Qqyw==
+X-Gm-Message-State: ALQs6tAqco670toU9RtIYAB8/6Gn2xQlyXKcz5S0D1lz9sbAPL/Uy/7T
+	hs1J5HN4AbEoKkaCAtiuksNlUbedMcym6jwrrx6Tdic0E2qNRGA=
+X-Received: by 2002:a6b:2b10:: with SMTP id r16-v6mr35310484ior.204.1524767804426;
+        Thu, 26 Apr 2018 11:36:44 -0700 (PDT)
+X-Forwarded-To: hype-stack@christiannet.info
+X-Forwarded-For: jstnchristian@gmail.com hype-stack@christiannet.info
+Delivered-To: jstnchristian@gmail.com
+Received: by 2002:a02:948c:0:0:0:0:0 with SMTP id x12-v6csp2361359jah;
+        Thu, 26 Apr 2018 11:36:43 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqJ/5zczkRymxYVXeryWzULpsZoaBTowDKqJdsK1C9M4WA5MNZOVkuvivo1vXaHRqz4Uru4
+X-Received: by 2002:a81:1087:: with SMTP id 129-v6mr1719012ywq.50.1524767803229;
+        Thu, 26 Apr 2018 11:36:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524767803; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NmcXSW+WBK5U0HDmiCii65XJg99oRtG9+3iiC6Raao+6j1h5oXg/65dgJ7xAB9TUlT
+         VIa+gUkVIbuhLpSwQL8M96uy+1izRfv+GK6tAQzifHVtyWM2wR+XPklQfZUXn3N6SgOT
+         DfQfqxmbXmEfc8LhEmYYagjXGzLWPmZQ5MFkg+lR9nh3bIXe9mfT05wtUrpiczmWwc7H
+         kPZXPL2+Rw/V49MDPQErDNzwZ5tfBtkGcB1Iw0rHuXyAngkNByQYkQpTGZj/qfrD3QZl
+         mQ+sSGj4hoxiWgdNHPXQwbPLKbAJPNY/JMilC3kUyAXokjONbJTY2YEfnrnjN2xDGgHm
+         yOQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:precedence
+         :list-id:feedback-id:message-id:date:to:reply-to:from:subject
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=dTl0QJshDsYLxBPUKMAvf0N1Hpmho8bz43aE4e+31kw=;
+        b=VFS2w5LEgsc6eKOnv4vsjeRFiSeDv4nkjgQZBMY1yEx/s8vhJSccnnlIbX+5Tw5Hmb
+         X0aj/NxmGkTlxtvnP2aJzRKfWiyjqm4s2mTGTImay/tvMsGdI3WFMN8yn3ooXMx1gdNc
+         /Sn7y4PNNx/6fzDq+TY7jqEykIWNwsg4N9PzGjBopYJtzppZtQX+7NF2ipP6p25343mV
+         7rfUbc6AQQyrG5gGX89rrgZKWZIPk/dRcFDER22h0Gg0QTt4kX8hTmChBB+Qs0qTqE/J
+         pbNk8+k3WKUA+hynAtgxOhvVrAgBbnI0NhwNHD48HOrEwGnOUjkJNRO03b3wZ54Nb6DW
+         XLfQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=W1dyhCqE;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=FU2B6FoR;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net designates 148.105.15.78 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+Return-Path: <bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net>
+Received: from mail78.sea91.rsgsv.net (mail78.sea91.rsgsv.net. [148.105.15.78])
+        by mx.google.com with ESMTPS id i68-v6si5131992ybg.135.2018.04.26.11.36.42
+        for <jstnchristian@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Apr 2018 11:36:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net designates 148.105.15.78 as permitted sender) client-ip=148.105.15.78;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=W1dyhCqE;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=FU2B6FoR;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net designates 148.105.15.78 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=hypem.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=hello@hypem.com;
+ bh=dTl0QJshDsYLxBPUKMAvf0N1Hpmho8bz43aE4e+31kw=;
+ b=W1dyhCqEC9so2gWeolQrcwvR2SXdO5B9aRuKfTwX5tYjZhyU/WhH2vCOaXu+BgbD8n38clIH7VOw
+   Iid8P5Mv7osIkYIQpgZeVJfaYh7cpQv9FRgk4/VZc05uGF9GRwysV4HrRcLD9+SNomN4492Vgy9w
+   fS9QBKth/J9JmuYPfso=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=dTl0QJshDsYLxBPUKMAvf0N1Hpmho8bz43aE4e+31kw=;
+ b=FU2B6FoRfK2lYV5MCMqOmFqFXxbhuXyikai4xmC5+ftTPPruCx+VnI5PpUukjNhqX1Ncl1yZZoVQ
+   sNvn4cCSv+Rc1l4udFlyelDUQ2lhektK/35eiPabHRRRecaya5F17yO8sanqFYkj1dSRvuF1zGZI
+   N5uq3sboZp4QeEG88FI=
+Received: from (127.0.0.1) by mail78.sea91.rsgsv.net id hs8e3m2ddl4d for <jstnchristian@gmail.com>; Thu, 26 Apr 2018 18:36:19 +0000 (envelope-from <bounce-mc.us7_18415043.807885-jstnchristian=gmail.com@mail78.sea91.rsgsv.net>)
+Subject: =?utf-8?Q?=F0=9F=8C=BB=C2=A0Stack=20=E2=84=96185=20with=C2=A0Sunflower=20Bean?=
+From: =?utf-8?Q?Hype=20Machine?= <hello@hypem.com>
+Reply-To:  <us7-874bbefcd0-a5c2fe59fe@conversation01.mailchimpapp.com>
+To: <jstnchristian@gmail.com>
+Date: Thu, 26 Apr 2018 18:36:19 +0000
+Message-ID: <e9e17a06a5cc8fcbf10aaddf3.6626bc0426.20180426183500.969fc94261.e6c42500@mail78.sea91.rsgsv.net>
+X-Mailer: MailChimp Mailer - **CID969fc942616626bc0426**
+X-Campaign: mailchimpe9e17a06a5cc8fcbf10aaddf3.969fc94261
+X-campaignid: mailchimpe9e17a06a5cc8fcbf10aaddf3.969fc94261
+X-Report-Abuse: Please report abuse for this campaign here: http://www.mailchimp.com/abuse/abuse.phtml?u=e9e17a06a5cc8fcbf10aaddf3&id=969fc94261&e=6626bc0426
+X-MC-User: e9e17a06a5cc8fcbf10aaddf3
+Feedback-ID: 18415043:18415043.807885:us7:mc
+List-ID: e9e17a06a5cc8fcbf10aaddf3mc list <e9e17a06a5cc8fcbf10aaddf3.220065.list-id.mcsv.net>
+Precedence: bulk
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Accounttype: pd
+List-Unsubscribe: <https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=969fc94261>, <mailto:unsubscribe-mc.us7_e9e17a06a5cc8fcbf10aaddf3.969fc94261-6626bc0426@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-mcda: FALSE
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1754105813"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1754105813
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+ (http://hypem.com/stack)
+ Five tracks of the week from Hype Machine (https://hypem.com/stack/185?vi=
+a=3Demail)
+
+Today's Stack (https://hypem.com/stack/185?via=3Demail) was handpicked by=
+ New York rock trio Sunflower Bean (https://hypem.com/artist/Sunflower+Bea=
+n) . Their excellent new album=2C Twentytwo In Blue=2C is out now on Mom +=
+ Pop.
+
+Listen now =E2=86=92 (https://hypem.com/stack/185?via=3Demail)
+
+Melody's Echo Chamber - Breathe In=2C Breathe Out (https://hypem.com/stack=
+/185?via=3Demail)
+In the five years since her debut album=2C French artist Melody Prochet le=
+arned to play drums. Here's her first song from behind the kit=2C the kale=
+idoscopic lead to her new album=2C Bon Voyage=2C made with members of Dung=
+en=2C The Amazing=2C and Pond.
+
+Unknown Mortal Orchestra - Not in Love We=E2=80=99re Just High (https://hy=
+pem.com/stack/185?via=3Demail)
+Released earlier this month=2C the new LP from shapeshifting New Zealand/O=
+regon band Unknown Mortal Orchestra dabbles in dark disco and psychedelic=
+ funk. Raven Sings The Blues (http://www.ravensingstheblues.com/unknown-mo=
+rtal-orchestra-not-in-love-were-just-high/) calls it a "Stevie Wonder trap=
+ped in technology aesthetic."
+
+King Krule - Border Line (https://hypem.com/stack/185?via=3Demail)
+Last year's opus from English singer-songwriter Archy Marshall steadily re=
+mains on Sunflower Bean's playlists. Fusing rockabilly=2C jazz=2C dub=2C R=
+&B=2C and beyond=2C King Krule's The Ooz is an entirely singular work.
+
+MorMor - Heaven's Only Wishful (https://hypem.com/stack/185?via=3Demail)
+Toronto singer/producer Seth Nyquist aka MorMor makes breezy pop music wit=
+h emotional weight. The rising artist (who rolls with BADBADNOTGOOD and Ch=
+arlotte Day Wilson) is just two singles into his yet-to-be-detailed debut=
+ project.
+
+MGMT - When You Die (https://hypem.com/stack/185?via=3Demail)
+A Hype Machine chart mainstay and an influence to many young acts today=2C=
+ MGMT returned in 2018 with Little Dark Age=2C a synth-pop record that fin=
+ds the zen between disturbing and fun.
+https://hypem.com/premiere/varsity Parallel Person (https://hypem.com/prem=
+iere/varsity) =2C the new album from Chicago-based indie-pop band Varsity.
+
+https://hypem.com/premiere/holy+pink Meditation Hymns for an Electronic Ag=
+e (https://hypem.com/premiere/holy+pink) =2C the new album from Los Angele=
+s-based duo Holy Pink.
+
+Grouper presents her new mix (https://soundcloud.com/resident-advisor/ra62=
+1-grouper) of spectral folk and experimental sound with the following: "Do=
+n=E2=80=99t forget when you=E2=80=99re done listening to take your cell ph=
+one and go throw it off of a cliff.=E2=80=9D
+
+Racked (https://www.racked.com/2018/4/17/17219166/fashion-style-algorithm-=
+amazon-echo-look) reports on style as an algorithm:
+
+"Algorithms are meant to provide surprise=2C showing us what we didn=E2=80=
+=99t realize we=E2=80=99d always wanted=2C and yet we are never quite surp=
+rised because we know to expect it."
+
+Thanks for listening!
+
+- Dave & Team Hype Machine
+
+http://hypem.com/anthony http://hypem.com/zoya http://hypem.com/stadiumssh=
+rines
+By the way=2C we've also made Spotify (https://open.spotify.com/user/hypem=
+/playlist/0uBPGiDY93DpfRBAzTfkTp) and SoundCloud (https://soundcloud.com/h=
+ypem/sets/stack) playlists with all of the recent Stack picks. Check them=
+ out=2C though the newest tracks are still only in this email.
+
+
+ps. If you're feeling this=2C forward it on :)
+
+This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.
+Unsubscribe (https://hypem.us7.list-manage.com/unsubscribe?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3D28a82e4150&e=3D6626bc0426&c=3D969fc94261) with one click=
+=2E
+--_----------=_MCPart_1754105813
+Content-Type: text/html; charset="us-ascii"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>🌻 Stack №185 with Sunflower Bean</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=640, maximum-scale=2">
+    
+  <style type="text/css">
+		.cta{
+			font-size:20px;
+			display:block;
+			padding:20px 15px;
+			background-color:#83c441;
+			color:#ffffff;
+			text-decoration:none;
+			width:200px;
+			text-align:center;
+			border-radius:32px;
+		}
+		.quote{
+			font-weight:bold;
+		}
+		.track_desc{
+			border-left-width:20px;
+			padding-left:10px;
+		}
+	@media only screen and (max-width: 480px){
+		.headerContent,.mainContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.footerContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.cta{
+			font-size:32px !important;
+			padding:25px 20px !important;
+			width:300px !important;
+			border-radius:45px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.track_desc{
+			border-left-width:30px !important;
+			padding-left:20px !important;
+		}
+
+}</style></head>
+  <body bgcolor="#fff" link="#0063dc" alink="#0063dc" vlink="#0063dc" style="text-align: left;">
+    <div style="width:100%;max-width:640px;background-color:#fff;padding:20px 0 0 0;">
+      <center>
+        <table cellpadding="0" cellspacing="0" border="0" width="640">
+          <tr>
+            <td style="padding-bottom:30px;text-align:left;" class="headerContent">
+              <center>
+                <table width="640" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="text-align:left;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#111;border-bottom:0;" colspan="2">
+                      <a target="_blank" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=4d2951038e&e=6626bc0426">
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=27bcd108c6&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280_thanks.png" style="width:640px;height:75px;background-color:#f9da35;border:0;display:block;" width="640">
+ 
+<a alt="Five tracks of the week from Hype Machine" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=1161379f94&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280.png" style="width:640px;height:125px;background-color:#fff;border:0;display:block;" width="640"></a></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:#fff;color:#222;font-size:16px;line-height:150%;padding:0;text-align:left;font-family:Helvetica, Arial, sans-serif;border-bottom:0;border-top:0;" colspan="2" class="mainContent"><p>Today's <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=89de017e55&e=6626bc0426">Stack</a> was handpicked by New York rock trio <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=fda17bafa7&e=6626bc0426">Sunflower Bean</a>. Their excellent new album, <i>Twentytwo In Blue</i>, is out now on Mom + Pop.</p>
+
+<center><a class="cta" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=0097b1d87e&e=6626bc0426" style="font-size: 20px;display: block;padding: 20px 15px;background-color: #83c441;color: #ffffff;text-decoration: none;width: 200px;text-align: center;border-radius: 32px;">Listen now &rarr;</a></center>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #E72C71;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=567a5ea033&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Melody&#39;s Echo Chamber - Breathe In, Breathe Out</a></strong><br>
+In the five years since her debut album, French artist Melody Prochet learned to play drums. Here&#39;s her first song from behind the kit, the kaleidoscopic lead to her new album, <em>Bon Voyage</em>, made with members of Dungen, The Amazing, and Pond.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #BE73AC;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=f5811be3f2&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Unknown Mortal Orchestra - Not in Love We&rsquo;re Just High</a></strong><br>
+Released earlier this month, the new LP from shapeshifting New Zealand/Oregon band Unknown Mortal Orchestra dabbles in dark disco and psychedelic funk. <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=f11e923057&e=6626bc0426">Raven Sings The Blues</a> calls it a &quot;Stevie Wonder trapped in technology aesthetic.&quot;</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #060606;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=7b6d925783&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">King Krule - Border Line</a></strong><br>
+Last year&#39;s opus from English singer-songwriter Archy Marshall steadily remains on Sunflower Bean&#39;s playlists. Fusing rockabilly, jazz, dub, R&amp;B, and beyond, King Krule&#39;s <em>The Ooz</em> is an entirely singular work.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #E06E87;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a71942394e&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">MorMor - Heaven&#39;s Only Wishful</a></strong><br>
+Toronto singer/producer Seth Nyquist aka MorMor makes breezy pop music with emotional weight. The rising artist (who rolls with BADBADNOTGOOD and Charlotte Day Wilson) is just two singles into his yet-to-be-detailed debut project.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #F0404D;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=ca9c335cf9&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">MGMT - When You Die</a></strong><br>
+A Hype Machine chart mainstay and an influence to many young acts today, MGMT returned in 2018 with <em>Little Dark Age</em>, a synth-pop record that finds the zen between disturbing and fun.</p>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/422e504f-b469-4bb5-84b4-28bd9d7439dc.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=3f6f305e71&e=6626bc0426"><img class="premiere-image" src="https://artwork.hypem.com/premieres/crop_featured/varsity.jpg" style="width: 640px; margin: 0px;" width="640"></a> <em><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a6cebf68bd&e=6626bc0426">Parallel Person</a></em>, the new album from Chicago-based indie-pop band Varsity.<br>
+<br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=958d38c860&e=6626bc0426"><img class="premiere-image" src="https://artwork.hypem.com/premieres/crop_featured/holypink.jpg" style="width: 640px; margin: 0px;" width="640"></a> <em><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=91fdf42fde&e=6626bc0426">Meditation Hymns for an Electronic Age</a></em>, the new album from Los Angeles-based duo Holy Pink.<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/db6dcec6-0816-44a7-a3d9-be10b7cfd501.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+Grouper presents her new <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d7c7a70c43&e=6626bc0426">mix</a> of spectral folk and experimental sound with the following: &quot;Don&rsquo;t forget when you&rsquo;re done listening to take your cell phone and go throw it off of a cliff.&rdquo;<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/b2241785-cbab-4c56-bd9c-b894477b81d7.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=5653fd8d6d&e=6626bc0426">Racked</a> reports on style as an algorithm:<br>
+<br>
+<span class="quote" style="font-weight: bold;">&quot;Algorithms are meant to provide surprise, showing us what we didn&rsquo;t realize we&rsquo;d always wanted, and yet we are never quite surprised because we know to expect it.&quot;</span><br>
+<br>
+Thanks for listening!<br>
+<br>
+- Dave &amp; Team Hype Machine
+<p><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=5a946e841d&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/anthony.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=dc5bde10a7&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/zoya.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=b0fdeba680&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/dave.jpg" style="background-color:#666;" width="40"></a></p>
+By the way, we&#39;ve also made <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=3c606acde5&e=6626bc0426" target="_blank">Spotify</a> and <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=9ba65dbc9d&e=6626bc0426" target="_blank">SoundCloud</a> playlists with all of the recent Stack picks. Check them out, though the newest tracks are still only in this email.
+
+<p>&nbsp;</p>
+
+<p style="border-top: 3px solid #83c441;padding-top:15px;">ps. If you&#39;re feeling this, forward it on :)</p>
+</td>
+                </tr>
+              </table>
+            </center>
+            <table width="640" border="0" cellpadding="0" cellspacing="0" style="border-top:3px solid #85C442;">
+              <tr>
+                <td style="font-size:14px;line-height:150%;font-family:Helvetica, Arial, sans-serif;color:#111;text-align:left;" class="footerContent"><p>This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn, NY 11222
+USA.<br>
+                                                <a href="https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=969fc94261">Unsubscribe</a> with one click.</p></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </div>
+<img src="https://hypem.us7.list-manage.com/track/open.php?u=e9e17a06a5cc8fcbf10aaddf3&id=969fc94261&e=6626bc0426" height="1" width="1"></body>
+</html>
+--_----------=_MCPart_1754105813--

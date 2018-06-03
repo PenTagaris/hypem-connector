@@ -1,0 +1,462 @@
+Return-Path: <jstnchristian+caf_=hype-stack=christiannet.info@gmail.com>
+Received: from mail-io0-f180.google.com (mail-io0-f180.google.com [209.85.223.180])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id 0js7db47eis9qhbhinnr2gjo86gfu14q4dtehlg1
+ for hype-stack@christiannet.info;
+ Fri, 18 May 2018 17:39:20 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.223.180 as permitted sender) client-ip=209.85.223.180; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f180.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.180 as permitted sender) client-ip=209.85.223.180; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f180.google.com;
+ dkim=pass header.i=@gmail.mcsv.net;
+ dkim=pass header.i=@hypem.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFHZXFGVmRRdUNjQTcrR3diQnpEUlNNRzNnNUFicWIrTmlZcUZyV1pNZnRzMGlvbzY0blZxb3B0OUV0UE1MK3crMlhlK2NSTFR5bnFtZG5qQVNRdmFCdVJHWndKeUs1YUFtbGtKbnVkbllMeHFkdjFEb2F0cjByK0V0S0prRWZteFZ5Z3FKc0RGRWk4QmxtS3U2VGk5TC9mWmlITmV3U1piS3ZXNVpwUTZCd1ZSZUZxbC8yWW5uOGc2UVpRdk0xVXh6bjJlWnNnS3NhZUxnUjZtLy9JRlAxYTRrWlVSckpyQjU5Rjh0YTU1RUZvSUIvNk5QbElOdmxrTzN3eDEvcGtsUzMrT2MxQm5ud0NBM3NjRGlzdmxXcndrZXNSRUxzRGsvNkFoa080WFF4MDNzN3NJbWNwZ3VPRXlFaGRPYXU2VXNaUzdJWGZKSURkUXNHem9iU2lGTVU=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=PczpN7zR3o+f1G7d/VAaJ+6fHqnraS/I/xYFqpdTfpgOG5iopfpsWZz2AS7hpj5GbHGyBCnreVfIU0buVUXLVKq51FM11fm1xUttIDwbRr6I/hs6QEOg2NclDWfbmdOsfS2irORRDKpcXQof2QRRtaolzWVx5LW80EPFj58FIRU=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1526665161; v=1; bh=ZFygB71Pwhb9lw8OgvS3odKyq+7b0/juU7zTZNkxB+g=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-io0-f180.google.com with SMTP id z4-v6so7118437iof.5
+        for <hype-stack@christiannet.info>; Fri, 18 May 2018 10:39:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :subject:from:reply-to:to:date:message-id:feedback-id:list-id
+         :precedence:list-unsubscribe:list-unsubscribe-post:mime-version;
+        bh=jxCJ043HiEqyyC9a9h7ny9RceDCQif7ldJlp61Sks+4=;
+        b=VHE8uJIoKUDiWX6trSfu09hr39Jj+ZrAGHOiY+HbdAoJFbfi4+riSjyWA4Y1xzwKKk
+         NhDv/ZLemvALLwYmPNqgoNwauNSOjpE6wPhTODxVaHeoQ4h4/1+WvC8YQPp+jYeqvqGF
+         J0PJZAqkBNWOJHUSXYJ59mEGqatqxSpKJ6uXawSR5wlE/bL1kRN/+tgOC1flx82pnhHn
+         bd+ppc7mUDBh/NqIyXmCqNYbUZMNvoNVK0U8tqN8tLo6YyUjyZjNS+eJGPbBQz1wTQcA
+         Ep7wpo+Qk93FZyuH9d8ahbYilWlsS/8YIkCSzb+i0dunBESpGxb2RQ21INqWJ74sk2WN
+         lV0Q==
+X-Gm-Message-State: ALKqPwcYCPcI9nOSDVzJZN2x+D3F2kE1k1Ez35gbJJTMAwOWWXkLPdbT
+	asPAQz92FpUdmuLCCMor3HdogLFJpybp+A8XoQfmR2YqZ1Vf5ZM=
+X-Received: by 2002:a6b:a50c:: with SMTP id o12-v6mr11157215ioe.16.1526665160213;
+        Fri, 18 May 2018 10:39:20 -0700 (PDT)
+X-Forwarded-To: hype-stack@christiannet.info
+X-Forwarded-For: jstnchristian@gmail.com hype-stack@christiannet.info
+Delivered-To: jstnchristian@gmail.com
+Received: by 2002:a02:948c:0:0:0:0:0 with SMTP id x12-v6csp3542874jah;
+        Fri, 18 May 2018 10:39:19 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqFCtqbxiXNnUM0QsEnQsyes2KZ/pJIFeYrNp45F9yaIWq0tOZKzTqXCSMW4VDzb7CJRuJp
+X-Received: by 2002:a0d:e8c2:: with SMTP id r185-v6mr5284897ywe.27.1526665159206;
+        Fri, 18 May 2018 10:39:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526665159; cv=none;
+        d=google.com; s=arc-20160816;
+        b=afeaPvOg2BAyK926Eqdcf9Tc0Fzq6Gh6q1szp8a+sLLwYek1miTqifivuSCTWC91F0
+         k6aC8fUqI3FMbueKPgprCkreROFRtOEmMyBlStq+kHrYLlrKZ12pIRzbhHebhsJwHu02
+         49oOmMGZtybORcjiVDI+ib+FE2ty+xiAZ9CEPPDCnMvFJexh/dM7aNSGaeZ16LhetPS0
+         aAhtKJZ2DFJKMGUxvrfCHr0PJD9rcMkZY5mv0uJlmfEZQSx+/jp9pJCDDnWiG1JG/mMX
+         zeVYW+8yABfPvgPUj40aE1n8CkNLSkMKRJru4WO7ATowHIbxpbH6bI0B4Yp0xYErWnGN
+         1PUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:precedence
+         :list-id:feedback-id:message-id:date:to:reply-to:from:subject
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=jxCJ043HiEqyyC9a9h7ny9RceDCQif7ldJlp61Sks+4=;
+        b=KQaE17pyaQN/gjKPnh+TdHVK0JwH8mNLdGik3Z0Q4w59Kb4JdCQuEXmFXmiavIFQte
+         Ma3e1wY6j6Of6hcLhnHndEoGi/lN5vMlH0Oc5oRgqKJI6uQisPG7eynYsZoetzVvFae0
+         HsHk03FoYMlxtkQXYjeYMdjbxN2SJAW0MooxXZFd89EAOfn2RKI8jBM7BoO1gHTkEIAQ
+         J62em3elaTF0qRTNKsBhCM0e4vS2ovN7B5yiAjC44Xn7U7Z+ahbvIaaqW+MTIIUzqtDZ
+         1FjILx+gS56L1SgPN+weL2Xhe+Po6fhQS9RCayvrUr4ml/8hN0gQbmBgcJj52TmQoX+d
+         4MGg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=1o0iyMCn;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=RVl024ua;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net designates 198.2.131.114 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+Return-Path: <bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net>
+Received: from mail114.atl111.rsgsv.net (mail114.atl111.rsgsv.net. [198.2.131.114])
+        by mx.google.com with ESMTPS id g199-v6si1900729ywe.535.2018.05.18.10.39.19
+        for <jstnchristian@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 May 2018 10:39:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net designates 198.2.131.114 as permitted sender) client-ip=198.2.131.114;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=1o0iyMCn;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=RVl024ua;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net designates 198.2.131.114 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=hypem.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=hello@hypem.com;
+ bh=jxCJ043HiEqyyC9a9h7ny9RceDCQif7ldJlp61Sks+4=;
+ b=1o0iyMCnH0Hyd8qaZNYfIZp/9g984wfjGmk5jT86HiXbelqILUlVUVREbBUtX1icBdETo+CrNGv5
+   Vb0tljnrGG0dZtW5cgABOqltr+mvalkDZWuPfI+ZH35vbevN8HlB5rtsUt32JZCY94gE8arltWP9
+   fj9bYZ53MTzftcfckW8=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=jxCJ043HiEqyyC9a9h7ny9RceDCQif7ldJlp61Sks+4=;
+ b=RVl024uaS87vH27ZYvMO+DDqclHGH+aznUNuTHuTKt684cCGmtd9Adojwk8KLfkGYP3ZOab0r33q
+   yMA14Ri0KDenG1W7zYAveg4RKFEk4g6bn26yzQEyZ5sODmgmrqyGC/Vk4PF21FhrE67SyhOdMt9L
+   tS6weZQXiBGZmopXQPg=
+Received: from (127.0.0.1) by mail114.atl111.rsgsv.net id hvs7se2ddl4k for <jstnchristian@gmail.com>; Fri, 18 May 2018 17:38:26 +0000 (envelope-from <bounce-mc.us7_18415043.807901-jstnchristian=gmail.com@mail114.atl111.rsgsv.net>)
+Subject: =?utf-8?Q?=F0=9F=92=8C=20Stack=20=E2=84=96188=20is=20enhanced=20by=20strings=20and=20occasional=20electronics?=
+From: =?utf-8?Q?Hype=20Machine?= <hello@hypem.com>
+Reply-To:  <us7-874bbefcd0-12eb13ab9e@conversation01.mailchimpapp.com>
+To: <jstnchristian@gmail.com>
+Date: Fri, 18 May 2018 17:38:26 +0000
+Message-ID: <e9e17a06a5cc8fcbf10aaddf3.6626bc0426.20180518173659.fd862e6758.6d5bbcb3@mail114.atl111.rsgsv.net>
+X-Mailer: MailChimp Mailer - **CIDfd862e67586626bc0426**
+X-Campaign: mailchimpe9e17a06a5cc8fcbf10aaddf3.fd862e6758
+X-campaignid: mailchimpe9e17a06a5cc8fcbf10aaddf3.fd862e6758
+X-Report-Abuse: Please report abuse for this campaign here: http://www.mailchimp.com/abuse/abuse.phtml?u=e9e17a06a5cc8fcbf10aaddf3&id=fd862e6758&e=6626bc0426
+X-MC-User: e9e17a06a5cc8fcbf10aaddf3
+Feedback-ID: 18415043:18415043.807901:us7:mc
+List-ID: e9e17a06a5cc8fcbf10aaddf3mc list <e9e17a06a5cc8fcbf10aaddf3.220065.list-id.mcsv.net>
+Precedence: bulk
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Accounttype: pd
+List-Unsubscribe: <https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=fd862e6758>, <mailto:unsubscribe-mc.us7_e9e17a06a5cc8fcbf10aaddf3.fd862e6758-6626bc0426@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-mcda: FALSE
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1662226385"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1662226385
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+ (http://hypem.com/stack)
+ Five tracks of the week from Hype Machine (https://hypem.com/stack/188?vi=
+a=3Demail)
+
+Here are five of the week's most interesting tracks on Hype Machine (https=
+://hypem.com/stack/188?via=3Demail) .
+
+Listen now =E2=86=92 (https://hypem.com/stack/188?via=3Demail)
+
+Madison McFerrin - Shine (https://hypem.com/stack/188?via=3Demail)
+Having released two mesmerizing EPs of a cappella work this year=2C Brookl=
+yn singer-songwriter Madison McFerrin (daughter of jazz legend Bobby) is o=
+n the rise=2C per Pitchfork (https://pitchfork.com/features/rising/madison=
+-mcferrin-is-making-a-cappella-cool-again/) : "A compelling testament to t=
+he power and dexterity of the human voice."
+
+Kamaal Williams - High Roller (https://hypem.com/stack/188?via=3Demail)
+One half of UK jazz duo Yussef Kamaal (Stack =E2=84=96109 (https://hypem.c=
+om/stack/109) )=2C also known for his Rhythm Section work as Henry Wu=2C K=
+amaal Williams soon releases his debut album The Return. The smooth=2C per=
+cussive "High Roller" is a nice invitation to the rest.
+
+Ric Wilson - Sinner (feat. Kweku Collins =2C Rane Raps & Nick Kosma) (http=
+s://hypem.com/stack/188?via=3Demail)
+Just a few Stacks (https://hypem.com/stack/186) back=2C we met Ric Wilson=
+=2C a charismatic 22 year-old rapper from Chicago. Here he trades verses w=
+ith Kweku Collins (=E2=84=96120 (https://hypem.com/stack/120) ) and Rane R=
+aps=2C while Nick Kosma carries the soulful chorus. His EP is out today on=
+ Innovative Leisure.
+
+Deeper - Pink Showers (https://hypem.com/stack/188?via=3Demail)
+Urgent vocals=2C steady drums=2C and intricate=2C angular guitar lines def=
+ine this Chicago band's sound=E2=80=94"that arty post-punk vibe=2C akin to=
+ Omni=2C" says Austin Town Hall (http://austintownhall.com/2018/05/09/deep=
+er-back-with-another-single/) . Their self-titled debut LP is out next wee=
+k on Fire Talk Records.
+
+KAADA - Farewell (https://hypem.com/stack/188?via=3Demail)
+Focused on departures=2C the cinematic songs on the latest album from Norw=
+egian composer Kaada are "enhanced by strings and occasional electronics=
+=2C but remain intimate throughout=2C like a small family at a bedside=2C"=
+ says A Closer Listen (https://acloserlisten.com/2018/05/14/kaada-closing-=
+statements/) .
+https://hypem.com/premiere/yours+are+the+only+ears Knock Hard (https://hyp=
+em.com/premiere/yours+are+the+only+ears) =2C the new album from New York f=
+olk songwriter Yours Are the Only Ears.
+
+https://hypem.com/premiere/hit+bargain Potential Maximizer (https://hypem.=
+com/premiere/hit+bargain) =2C the new album from Los Angeles punk band Hit=
+ Bargain.
+
+Earlier this week the anonymous and ever-intriguing DJ Healer=2C AKA Traum=
+prinz and Prince Of Denmark=2C released a 3-hour mix (https://soundcloud.c=
+om/planet-uterus/dj_healer_planet_lonely) comprised of original material.=
+ It flies.
+
+Sasha Geffen for Vulture (http://www.vulture.com/2018/05/spotify-r-kelly-a=
+nd-the-music-industrys-push-toward-change.html) on Spotify=2C R. Kelly=2C=
+ and the music industry=E2=80=99s slow push toward change:
+
+"While it=E2=80=99s easy to avoid streaming music made by alleged abusers=
+=2C starving these artists of pennies rarely feels like a political act."
+
+Thanks for listening!
+
+- Dave & Team Hype Machine
+
+http://hypem.com/anthony http://hypem.com/zoya http://hypem.com/stadiumssh=
+rines
+By the way=2C we've also made Spotify (https://open.spotify.com/user/hypem=
+/playlist/0uBPGiDY93DpfRBAzTfkTp) and SoundCloud (https://soundcloud.com/h=
+ypem/sets/stack) playlists with all of the recent Stack picks. Check them=
+ out=2C though the newest tracks are still only in this email.
+
+
+ps. If you're feeling this=2C forward it on :)
+
+This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.
+Unsubscribe (https://hypem.us7.list-manage.com/unsubscribe?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3D28a82e4150&e=3D6626bc0426&c=3Dfd862e6758) with one click=
+=2E
+--_----------=_MCPart_1662226385
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www=
+=2Ew3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+  <head>
+    <title>=F0=9F=92=8C Stack =E2=84=96188 is enhanced by strings and occa=
+sional electronics</title>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-=
+8">
+    <meta name=3D"viewport" content=3D"width=3D640=2C maximum-scale=3D2">
+
+  <style type=3D"text/css">
+=09=09.cta{
+=09=09=09font-size:20px;
+=09=09=09display:block;
+=09=09=09padding:20px 15px;
+=09=09=09background-color:#83c441;
+=09=09=09color:#ffffff;
+=09=09=09text-decoration:none;
+=09=09=09width:200px;
+=09=09=09text-align:center;
+=09=09=09border-radius:32px;
+=09=09}
+=09=09.quote{
+=09=09=09font-weight:bold;
+=09=09}
+=09=09.track_desc{
+=09=09=09border-left-width:20px;
+=09=09=09padding-left:10px;
+=09=09}
+=09@media only screen and (max-width: 480px){
+=09=09.headerContent=2C.mainContent{
+=09=09=09font-size:32px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.footerContent{
+=09=09=09font-size:32px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.cta{
+=09=09=09font-size:32px !important;
+=09=09=09padding:25px 20px !important;
+=09=09=09width:300px !important;
+=09=09=09border-radius:45px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.track_desc{
+=09=09=09border-left-width:30px !important;
+=09=09=09padding-left:20px !important;
+=09=09}
+
+}</style></head>
+  <body bgcolor=3D"#fff" link=3D"#0063dc" alink=3D"#0063dc" vlink=3D"#0063=
+dc" style=3D"text-align: left;">
+    <div style=3D"width:100%;max-width:640px;background-color:#fff;padding=
+:20px 0 0 0;">
+      <center>
+        <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"6=
+40">
+          <tr>
+            <td style=3D"padding-bottom:30px;text-align:left;" class=3D"he=
+aderContent">
+              <center>
+                <table width=3D"640" cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0">
+                  <tr>
+                    <td style=3D"text-align:left;font-family:Helvetica=2C=
+ Arial=2C sans-serif;font-size:16px;color:#111;border-bottom:0;" colspan=
+=3D"2">
+                      <a target=3D"_blank" href=3D"https://hypem.us7.list-=
+manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D58dc15c4ef&e=3D=
+6626bc0426">
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D18787ec508&e=3D6626bc0426" style=3D"margin:0;"><img src=
+=3D"https://artwork.hypem.com/stack/stack_1280_thanks.png" style=3D"width:=
+640px;height:75px;background-color:#f9da35;border:0;display:block;" width=
+=3D"640">
+<a alt=3D"Five tracks of the week from Hype Machine" href=3D"https://hypem=
+=2Eus7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D14a61a=
+287f&e=3D6626bc0426" style=3D"margin:0;"><img src=3D"https://artwork.hype=
+m.com/stack/stack_1280.png" style=3D"width:640px;height:125px;background-c=
+olor:#fff;border:0;display:block;" width=3D"640"></a></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style=3D"background-color:#fff;color:#222;font-siz=
+e:16px;line-height:150%;padding:0;text-align:left;font-family:Helvetica=2C=
+ Arial=2C sans-serif;border-bottom:0;border-top:0;" colspan=3D"2" class=3D=
+"mainContent"><p>Here are five of the week&#39;s most interesting tracks o=
+n&nbsp;<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a=
+06a5cc8fcbf10aaddf3&id=3D3cc95f43a3&e=3D6626bc0426">Hype Machine</a>.</p>
+
+<center><a class=3D"cta" href=3D"https://hypem.us7.list-manage.com/track/c=
+lick?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Da87194b3d3&e=3D6626bc0426" style=
+=3D"font-size: 20px;display: block;padding: 20px 15px;background-color: #8=
+3c441;color: #ffffff;text-decoration: none;width: 200px;text-align: center=
+;border-radius: 32px;">Listen now &rarr;</a></center>
+
+<p class=3D"track_desc" style=3D"border-left-style: solid;border-left-colo=
+r: #7A60BB;border-left-width: 20px;padding-left: 10px;"><strong><a href=3D=
+"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aadd=
+f3&id=3D49d6b34379&e=3D6626bc0426" style=3D"color:#000;text-decoration:no=
+ne;" target=3D"_blank">Madison McFerrin - Shine</a></strong><br>
+Having released two mesmerizing EPs of a cappella work this year=2C Brookl=
+yn singer-songwriter Madison McFerrin (daughter of jazz legend Bobby) is o=
+n the rise=2C per <a href=3D"https://hypem.us7.list-manage.com/track/click=
+?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Dd9b63b1a46&e=3D6626bc0426">Pitchfork<=
+/a>: &quot;A compelling testament to the power and dexterity of the human=
+ voice.&quot;</p>
+
+<p class=3D"track_desc" style=3D"border-left-style: solid;border-left-colo=
+r: #000000;border-left-width: 20px;padding-left: 10px;"><strong><a href=3D=
+"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aadd=
+f3&id=3D8abc94e7d1&e=3D6626bc0426" style=3D"color:#000;text-decoration:no=
+ne;" target=3D"_blank">Kamaal Williams - High Roller</a></strong><br>
+One half of UK jazz duo Yussef Kamaal (<a href=3D"https://hypem.us7.list-m=
+anage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D54dc33a023&e=3D=
+6626bc0426">Stack =E2=84=96109</a>)=2C also known for his Rhythm Section wo=
+rk as Henry Wu=2C Kamaal Williams soon releases his debut album <em>The Re=
+turn</em>. The smooth=2C percussive &quot;High Roller&quot; is a nice invi=
+tation to the rest.</p>
+
+<p class=3D"track_desc" style=3D"border-left-style: solid;border-left-colo=
+r: #1A1917;border-left-width: 20px;padding-left: 10px;"><strong><a href=3D=
+"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aadd=
+f3&id=3D0efd4eadee&e=3D6626bc0426" style=3D"color:#000;text-decoration:no=
+ne;" target=3D"_blank">Ric Wilson - Sinner (feat. Kweku Collins =2C Rane R=
+aps &amp; Nick Kosma)</a></strong><br>
+Just a few <a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9=
+e17a06a5cc8fcbf10aaddf3&id=3D917a521641&e=3D6626bc0426">Stacks</a> back=
+=2C we met Ric Wilson=2C a charismatic 22 year-old rapper from Chicago. He=
+re he trades verses with Kweku Collins (<a href=3D"https://hypem.us7.list-=
+manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D6fa9260efb&e=3D=
+6626bc0426">=E2=84=96120</a>) and Rane Raps=2C while Nick Kosma carries th=
+e soulful chorus. His EP is out today on Innovative Leisure.</p>
+
+<p class=3D"track_desc" style=3D"border-left-style: solid;border-left-colo=
+r: #191917;border-left-width: 20px;padding-left: 10px;"><strong><a href=3D=
+"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aadd=
+f3&id=3Dbefdb242f6&e=3D6626bc0426" style=3D"color:#000;text-decoration:no=
+ne;" target=3D"_blank">Deeper - Pink Showers</a></strong><br>
+Urgent vocals=2C steady drums=2C and intricate=2C angular guitar lines def=
+ine this Chicago band&#39;s sound&mdash;&quot;that arty post-punk vibe=2C=
+ akin to Omni=2C&quot; says <a href=3D"https://hypem.us7.list-manage.com/t=
+rack/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D60ce2e2f39&e=3D6626bc0426">=
+Austin Town Hall</a>. Their self-titled debut LP is out next week on Fire=
+ Talk Records.</p>
+
+<p class=3D"track_desc" style=3D"border-left-style: solid;border-left-colo=
+r: #FEEFCE;border-left-width: 20px;padding-left: 10px;"><strong><a href=3D=
+"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aadd=
+f3&id=3Dc342c615ce&e=3D6626bc0426" style=3D"color:#000;text-decoration:no=
+ne;" target=3D"_blank">KAADA - Farewell</a></strong><br>
+Focused on departures=2C the cinematic songs on the latest album from Norw=
+egian composer Kaada are &quot;enhanced by strings and occasional electron=
+ics=2C but remain intimate throughout=2C like a small family at a bedside=
+=2C&quot; says <a href=3D"https://hypem.us7.list-manage.com/track/click?u=
+=3De9e17a06a5cc8fcbf10aaddf3&id=3Db288068bcb&e=3D6626bc0426">A Closer Lis=
+ten</a>.</p>
+<img align=3D"none" height=3D"51" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/422e504f-b469-4bb5-84b4-28bd9d7439dc.png" st=
+yle=3D"width: 640px; height: 51px; margin: 0px;" width=3D"640"><br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3D458ba83ef7&e=3D6626bc0426"><img class=3D"premiere-image=
+" src=3D"https://artwork.hypem.com/premieres/crop_featured/yours.jpg" styl=
+e=3D"width: 640px; margin: 0px;" width=3D"640"></a> <em><a href=3D"https:/=
+/hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D=
+bc3fc9b6b1&e=3D6626bc0426">Knock Hard</a></em>=2C the new album from New=
+ York folk songwriter Yours Are the Only Ears.<br>
+<br>
+<a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8=
+fcbf10aaddf3&id=3De500c71972&e=3D6626bc0426"><img class=3D"premiere-image=
+" src=3D"https://artwork.hypem.com/premieres/crop_featured/hitbargain.jpg"=
+ style=3D"width: 640px; margin: 0px;" width=3D"640"></a> <em><a href=3D"ht=
+tps://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&=
+id=3D03203c06e8&e=3D6626bc0426">Potential Maximizer</a></em>=2C the new a=
+lbum from Los Angeles punk band Hit Bargain.<br>
+<br>
+<img align=3D"none" height=3D"51" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/db6dcec6-0816-44a7-a3d9-be10b7cfd501.png" st=
+yle=3D"width: 640px; height: 51px; margin: 0px;" width=3D"640"><br>
+Earlier this week the anonymous and ever-intriguing DJ Healer=2C AKA Traum=
+prinz and Prince Of Denmark=2C released a <a href=3D"https://hypem.us7.lis=
+t-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Daf9041ef07&e=
+=3D6626bc0426" target=3D"_blank">3-hour mix</a> comprised of original mat=
+erial. It flies.<br>
+<br>
+<img align=3D"none" height=3D"51" src=3D"https://gallery.mailchimp.com/e9e=
+17a06a5cc8fcbf10aaddf3/images/b2241785-cbab-4c56-bd9c-b894477b81d7.png" st=
+yle=3D"width: 640px; height: 51px; margin: 0px;" width=3D"640"><br>
+Sasha Geffen for <a href=3D"https://hypem.us7.list-manage.com/track/click?=
+u=3De9e17a06a5cc8fcbf10aaddf3&id=3Ddf9d953ba3&e=3D6626bc0426">Vulture</a>=
+ on Spotify=2C R. Kelly=2C and the music industry&rsquo;s slow push toward=
+ change:<br>
+<br>
+<span class=3D"quote" style=3D"font-weight: bold;">&quot;While it&rsquo;s=
+ easy to avoid streaming music made by alleged abusers=2C starving these a=
+rtists of pennies rarely feels like a political act.&quot;</span><br>
+<br>
+Thanks for listening!<br>
+<br>
+- Dave &amp; Team Hype Machine
+<p><a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5=
+cc8fcbf10aaddf3&id=3D67eecb2444&e=3D6626bc0426" target=3D"_blank"><img he=
+ight=3D"40" src=3D"https://artwork.hypem.com/stack/anthony.jpg" style=3D"b=
+ackground-color:#666;" width=3D"40"></a> <a href=3D"https://hypem.us7.list=
+-manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Dc2440a7cda&e=3D=
+6626bc0426" target=3D"_blank"><img height=3D"40" src=3D"https://artwork.h=
+ypem.com/stack/zoya.jpg" style=3D"background-color:#666;" width=3D"40"></a=
+> <a href=3D"https://hypem.us7.list-manage.com/track/click?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3Db7d17af50f&e=3D6626bc0426" target=3D"_blank"><img hei=
+ght=3D"40" src=3D"https://artwork.hypem.com/stack/dave.jpg" style=3D"backg=
+round-color:#666;" width=3D"40"></a></p>
+By the way=2C we&#39;ve also made <a href=3D"https://hypem.us7.list-manage=
+=2Ecom/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D9c4b2b96a2&e=3D=
+6626bc0426" target=3D"_blank">Spotify</a> and <a href=3D"https://hypem.us7.list-=
+manage.com/track/click?u=3De9e17a06a5cc8fcbf10aaddf3&id=3Dd796c44186&e=3D=
+6626bc0426" target=3D"_blank">SoundCloud</a> playlists with all of the rec=
+ent Stack picks. Check them out=2C though the newest tracks are still only=
+ in this email.
+
+<p>&nbsp;</p>
+
+<p style=3D"border-top: 3px solid #83c441;padding-top:15px;">ps. If you&#3=
+9;re feeling this=2C forward it on :)</p>
+</td>
+                </tr>
+              </table>
+            </center>
+            <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-top:3px solid #85C442;">
+              <tr>
+                <td style=3D"font-size:14px;line-height:150%;font-family:H=
+elvetica=2C Arial=2C sans-serif;color:#111;text-align:left;" class=3D"foot=
+erContent"><p>This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.<br>
+                                                <a href=3D"https://hypem.u=
+s7.list-manage.com/unsubscribe?u=3De9e17a06a5cc8fcbf10aaddf3&id=3D28a82e41=
+50&e=3D6626bc0426&c=3Dfd862e6758">Unsubscribe</a> with one click.</p></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </div>
+<img src=3D"https://hypem.us7.list-manage.com/track/open.php?u=3De9e17a06a=
+5cc8fcbf10aaddf3&id=3Dfd862e6758&e=3D6626bc0426" height=3D"1" width=3D"1"=
+></body>
+</html>
+--_----------=_MCPart_1662226385--

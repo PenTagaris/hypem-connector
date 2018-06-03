@@ -1,0 +1,333 @@
+Return-Path: <jstnchristian+caf_=hype-stack=christiannet.info@gmail.com>
+Received: from mail-io0-f171.google.com (mail-io0-f171.google.com [209.85.223.171])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id kpk6ij7aieb12ehgo5popdoh7fd8ah8t6ap207g1
+ for hype-stack@christiannet.info;
+ Fri, 11 May 2018 14:20:40 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.223.171 as permitted sender) client-ip=209.85.223.171; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f171.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.171 as permitted sender) client-ip=209.85.223.171; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f171.google.com;
+ dkim=pass header.i=@hypem.com;
+ dkim=pass header.i=@gmail.mcsv.net;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFIaE81YnpNZEwvRWMxeCtmeW5ha3VZMWhrT0FReVlBZW03OU1wZDJZSm5laVV0WHNhQU43TDhUM2dVd05FOHptb09uY2pjUzVUd2JVNGZRRFFpMjZjeWUyQ3AvQ2hneG8zS2svSjRhUVo1R0x5N1dTazQvNE5OUmhhZHZzWXlzQnFtUUNmcHFvbE9mdU84UXV2cFFmeEp5cW11ZzFXR2UxdWtyeHdGZWNiaTd2cUtBVzB2WGFGK3JHR1pNSzBnVGx2UXpiV0lqTncySUVCcVNUNytJS1ptT0EvRjJWOXhqTG9pV09tTDl3eXJteVJCKzhLTjFpWFJIQ2FGVzV4YnBJVWgvc2FIMXFuSjloREk4b3B0MHQ1TG9FeFBBSkJNTHFCdXFjMGc1aUNzTXZ5M09HSnhkNzlLRksxVTFKdlZVOWhTZjU4aVBlaDhaeUFweGY4UzVrSXo=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=gOLunTKlh99pw3rl6KnGOFufA26OCqpVhLT9JI/bFVos8QNB2XlStntp2ESkOF9k/DN02deSbOphbajWbJjUFrdKd8dR2F8fp3PqYCefIj4sx29y8/7nclX4wexn9V3I3cJxalXDcrCzqo5kt2oHAS6xjHggaq6RM25e8MdvmHw=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1526048440; v=1; bh=F4WRxiThbib1HGcKj8kbAg7WbZTXUG9dhIJgcHzFqFA=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-io0-f171.google.com with SMTP id e12-v6so7179348iob.8
+        for <hype-stack@christiannet.info>; Fri, 11 May 2018 07:20:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :subject:from:reply-to:to:date:message-id:feedback-id:list-id
+         :precedence:list-unsubscribe:list-unsubscribe-post:mime-version;
+        bh=1MeMFJjoT0NS5dvJrcx0IsqJh5cqhI8PXkxuiAkOapU=;
+        b=kndk43yZImFyWb4GTEnfug0yqHZET4lXTwv/DZws1I/xFKTCArGmMKmiQf98XXSkf9
+         DuOc9bSN1GdEF7HCB+wa8vOFMXjoZ0ErAOYR+KVGiqFR/pq0WuvK080IQHigP1QwFJ8R
+         cux/ivnmN1oq/xWj9QpJiV7OIJ+f95jwBAtcHUFejmEwNqG8BrXwK98MEXAMcQY+J0ES
+         bOqCv9uIIEHOcBAmDavHvhdoW9QK4yIBqxz0jleS6q5yOKGZMAchqciKda+IxnvuQO+j
+         Q021UykzYKhSVHS/+uwC5ZxXPVkjGSb0JjgCEMYoeIq776YVXKm9YjG6ydl/h3bKnDn/
+         xG6A==
+X-Gm-Message-State: ALKqPwfjx3uiMt7x71dAJiKEUom6aNkJHBS1mGWoGb3M2hoKYNvlfpXh
+	4Ncl76KYz+ukzDWKOJ+9xdss1iw/e15rbkPGN839LT58Cw+blVw=
+X-Received: by 2002:a6b:6106:: with SMTP id v6-v6mr5782130iob.184.1526048439367;
+        Fri, 11 May 2018 07:20:39 -0700 (PDT)
+X-Forwarded-To: hype-stack@christiannet.info
+X-Forwarded-For: jstnchristian@gmail.com hype-stack@christiannet.info
+Delivered-To: jstnchristian@gmail.com
+Received: by 2002:a02:948c:0:0:0:0:0 with SMTP id x12-v6csp773152jah;
+        Fri, 11 May 2018 07:20:37 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZppb1e5s+SkVEa/rjft/53ZVewIbNAUBnCDI+ozgFRzhPoh3XYKiPUfuX4iWQDCasiebZ36
+X-Received: by 2002:a25:394b:: with SMTP id g72-v6mr1272782yba.52.1526048437910;
+        Fri, 11 May 2018 07:20:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526048437; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HIXrrKdKNu+f9k6iKVzzLLHeq19kSfxXkcAyZX1Gx1oc2u0aMMOdQpzc0Z+AcGbsrP
+         nxedSZtfOSlTFNFbgCCy6qYya3HN5QltvcKK5wY/npU3ee+BL0lSfjx7B9fWMtGqJkNo
+         77nwoEFpbPDqye3Xzvi3MNRk1PA9YHtlvyvnfAwpVbAv15drKOGU3FKARBEZD90Zx95E
+         1kvqI0G1FGQBi2VHmHh+3nT79cZpyfGNhodBlmm+0Csp744FUGh7++pnwJycf/tIFB3w
+         fT2gJs1yVZ+KcLeCbk9C204NCBMdnZDOKvzcgHU+ylHCYYBKaBS8zhJV0lo/b3WjisaV
+         0AxQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:precedence
+         :list-id:feedback-id:message-id:date:to:reply-to:from:subject
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=1MeMFJjoT0NS5dvJrcx0IsqJh5cqhI8PXkxuiAkOapU=;
+        b=GhK57+izMOkedvzDTM0dzQO3U9+/PfU0Nvuf13c0f9g49QkrTXnjeSxJ8+eNif0xpw
+         B4fqiiosUvuDvsfyBih/ETiWFFJZtQlaL29zvllkMvcXhRttGWJeSvQ8xtsasSorCs+o
+         FOJD7qp0LdXDgkSIddaOFTwRy582OT3QZ90BhgbWtCBENPEj4dt4WvBO/MzZCvZ1zuq4
+         b/26eUf69Z5Le0UVoXDDaYduiAvfd1NOoMf14JwwyiiX1tC18MIH3JiKwzoL6h9INPWS
+         hqxdLLSewUAFTvH8nyBVo+EAlwohXQids1zeRwY1BiL8RWbukSXGHyP5TAWSTArQDFLQ
+         oRHA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=uj/eXXzh;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=iO6/bWDY;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net designates 198.2.184.65 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+Return-Path: <bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net>
+Received: from mail65.suw91.mcdlv.net (mail65.suw91.mcdlv.net. [198.2.184.65])
+        by mx.google.com with ESMTPS id i4-v6si679053ywb.262.2018.05.11.07.20.37
+        for <jstnchristian@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 May 2018 07:20:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net designates 198.2.184.65 as permitted sender) client-ip=198.2.184.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=uj/eXXzh;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=iO6/bWDY;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net designates 198.2.184.65 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=hypem.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=hello@hypem.com;
+ bh=1MeMFJjoT0NS5dvJrcx0IsqJh5cqhI8PXkxuiAkOapU=;
+ b=uj/eXXzhE93u9iwS5Trxcu09D/hN4GOERg0vWtRHgmzS3jfzw1n9kVbxMhRYogH3c7/QQ5+95aJw
+   yKvOyMf7q2kgbPCCGBnuW0cjIO/IQryBZhNslbjgjsLlT6AKL57o/sQWLCABD8jeyHGdfe2Z2V2T
+   IPbfutI7RSXmLdbrYzY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=1MeMFJjoT0NS5dvJrcx0IsqJh5cqhI8PXkxuiAkOapU=;
+ b=iO6/bWDYnJ82sNB0+jtRWM77+tR08p3ivmywbFTtTgViEnkPtAnwy/njFPCnmvz8cnrVx596OfuK
+   1U8y2yq3C+SR4MGNU0iWMQ4BX/vLYbIvgUiv1skDVne4a5wvhpB/hrgcN7vpWbnhITDI2gTV0F7m
+   PE+84ZIEZoH7rCtDd0k=
+Received: from (127.0.0.1) by mail65.suw91.mcdlv.net id humjba2ddl4o for <jstnchristian@gmail.com>; Fri, 11 May 2018 14:20:35 +0000 (envelope-from <bounce-mc.us7_18415043.807897-jstnchristian=gmail.com@mail65.suw91.mcdlv.net>)
+Subject: =?utf-8?Q?=F0=9F=92=8C=C2=A0Stack=20=E2=84=96187=20is=C2=A0gently=20sun=2Dwarped?=
+From: =?utf-8?Q?Hype=20Machine?= <hello@hypem.com>
+Reply-To:  <us7-874bbefcd0-60bdad88ee@conversation01.mailchimpapp.com>
+To: <jstnchristian@gmail.com>
+Date: Fri, 11 May 2018 14:20:35 +0000
+Message-ID: <e9e17a06a5cc8fcbf10aaddf3.6626bc0426.20180511141842.7a7fcd356c.c1c22c90@mail65.suw91.mcdlv.net>
+X-Mailer: MailChimp Mailer - **CID7a7fcd356c6626bc0426**
+X-Campaign: mailchimpe9e17a06a5cc8fcbf10aaddf3.7a7fcd356c
+X-campaignid: mailchimpe9e17a06a5cc8fcbf10aaddf3.7a7fcd356c
+X-Report-Abuse: Please report abuse for this campaign here: http://www.mailchimp.com/abuse/abuse.phtml?u=e9e17a06a5cc8fcbf10aaddf3&id=7a7fcd356c&e=6626bc0426
+X-MC-User: e9e17a06a5cc8fcbf10aaddf3
+Feedback-ID: 18415043:18415043.807897:us7:mc
+List-ID: e9e17a06a5cc8fcbf10aaddf3mc list <e9e17a06a5cc8fcbf10aaddf3.220065.list-id.mcsv.net>
+Precedence: bulk
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Accounttype: pd
+List-Unsubscribe: <https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=7a7fcd356c>, <mailto:unsubscribe-mc.us7_e9e17a06a5cc8fcbf10aaddf3.7a7fcd356c-6626bc0426@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-mcda: FALSE
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_2020624550"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_2020624550
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+ (http://hypem.com/stack)
+ Five tracks of the week from Hype Machine (https://hypem.com/stack/187?vi=
+a=3Demail)
+
+Here are five of the week's most interesting tracks on Hype Machine (https=
+://hypem.com/stack/187?via=3Demail) .
+
+Listen now =E2=86=92 (https://hypem.com/stack/187?via=3Demail)
+
+The Maghreban - Revenge (feat. Rutendo Machiridza) (https://hypem.com/stac=
+k/187?via=3Demail)
+British producer Ayman Rostom's debut album under his house music alias is=
+ an imaginative tapestry of Afrobeat rhythms=2C dub grooves=2C and blissfu=
+l sampledelia. Here he connects with Zimbabwean vocalist and Mbira player=
+ Rutendo Machiridza.
+
+Boy Pablo - Losing You (https://hypem.com/stack/187?via=3Demail)
+Following a sudden YouTube hit in 2017=2C this Norwegian bedroom pop band=
+ of high school friends led by Pablo Mu=C3=B1oz have sold out shows in Eur=
+ope and head next to the US. Their latest is a bubbly breakup song.
+
+Jean Deaux - Energy (prod. by ROMderful) (https://hypem.com/stack/187?via=
+=3Demail)
+The rising Chicago vocalist and Saba/Smino collaborator dismisses unwanted=
+ energy here over production from Soulection's Romderful: "Neptunes-colore=
+d spritz of hand drums=2C claps=2C bells=2C and fat synth bass=2C" per Pas=
+sion of The Weiss (https://www.passionweiss.com/2018/05/09/jean-deaux-inte=
+rview/) .
+
+Tanukichan - Lazy Love (https://hypem.com/stack/187?via=3Demail)
+Last featured on Toro Y Moi's Stack (https://hypem.com/stack/134) =2C Bay=
+ Area musician Hannah van Loon is readying her debut LP on Chaz's label Co=
+mpany Records. Judging by "Lazy Love=2C" it'll be a shimmering mix of intr=
+ospective songwriting and shoegaze riffs.
+
+MUNYA - Des Bisous Partout (https://hypem.com/stack/187?via=3Demail)
+The "dreamy=2C gently sun-warped French indie-pop" of Montreal-based singe=
+r/producer Josianne Boivin=2C aka MUNYA=2C is a recent discovery on Gorill=
+a Vs. Bear (http://www.gorillavsbear.net/munya-north-hatley/) . Last week=
+ she self-released a mini-EP called North Hatley.
+https://hypem.com/premiere/hit+bargain Potential Maximizer (https://hypem.=
+com/premiere/hit+bargain) =2C the new album from Los Angeles punk band Hit=
+ Bargain.
+
+https://hypem.com/premiere/yours+are+the+only+ears Knock Hard (https://hyp=
+em.com/premiere/yours+are+the+only+ears) =2C the new album from New York f=
+olk songwriter Yours Are the Only Ears.
+
+R&S-signed producer The Maghreban (above) makes Dekmantel a "masterful meg=
+a mix (https://soundcloud.com/dkmntl/dekmantel-podcast-171-the-maghreban)=
+ of sounds and scenes and styles [from cosmic disco to horror soundtracks=
+] that really shouldn=E2=80=99t go together=2C but they do."
+
+Ta-Nehisi Coates for The Atlantic (https://www.theatlantic.com/entertainme=
+nt/archive/2018/05/im-not-black-im-kanye/559763/) on Kanye West in the age=
+ of Donald Trump:
+
+"Kurt Cobain=E2=80=99s death was a great tragedy for his legions of fans.=
+ Tupac=E2=80=99s was a tragedy for an entire people. When brilliant black=
+ artists fall down on the stage=2C they don=E2=80=99t fall down alone."
+
+Thanks for listening!
+
+- Dave & Team Hype Machine
+
+http://hypem.com/anthony http://hypem.com/zoya http://hypem.com/stadiumssh=
+rines
+By the way=2C we've also made Spotify (https://open.spotify.com/user/hypem=
+/playlist/0uBPGiDY93DpfRBAzTfkTp) and SoundCloud (https://soundcloud.com/h=
+ypem/sets/stack) playlists with all of the recent Stack picks. Check them=
+ out=2C though the newest tracks are still only in this email.
+
+
+ps. If you're feeling this=2C forward it on :)
+
+This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.
+Unsubscribe (https://hypem.us7.list-manage.com/unsubscribe?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3D28a82e4150&e=3D6626bc0426&c=3D7a7fcd356c) with one click=
+=2E
+--_----------=_MCPart_2020624550
+Content-Type: text/html; charset="us-ascii"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>💌 Stack №187 is gently sun-warped</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=640, maximum-scale=2">
+    
+  <style type="text/css">
+		.cta{
+			font-size:20px;
+			display:block;
+			padding:20px 15px;
+			background-color:#83c441;
+			color:#ffffff;
+			text-decoration:none;
+			width:200px;
+			text-align:center;
+			border-radius:32px;
+		}
+		.quote{
+			font-weight:bold;
+		}
+		.track_desc{
+			border-left-width:20px;
+			padding-left:10px;
+		}
+	@media only screen and (max-width: 480px){
+		.headerContent,.mainContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.footerContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.cta{
+			font-size:32px !important;
+			padding:25px 20px !important;
+			width:300px !important;
+			border-radius:45px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.track_desc{
+			border-left-width:30px !important;
+			padding-left:20px !important;
+		}
+
+}</style></head>
+  <body bgcolor="#fff" link="#0063dc" alink="#0063dc" vlink="#0063dc" style="text-align: left;">
+    <div style="width:100%;max-width:640px;background-color:#fff;padding:20px 0 0 0;">
+      <center>
+        <table cellpadding="0" cellspacing="0" border="0" width="640">
+          <tr>
+            <td style="padding-bottom:30px;text-align:left;" class="headerContent">
+              <center>
+                <table width="640" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="text-align:left;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#111;border-bottom:0;" colspan="2">
+                      <a target="_blank" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a5eaf7ef67&e=6626bc0426">
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=2f397f013c&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280_thanks.png" style="width:640px;height:75px;background-color:#f9da35;border:0;display:block;" width="640">
+ 
+<a alt="Five tracks of the week from Hype Machine" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=ce749bbb0f&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280.png" style="width:640px;height:125px;background-color:#fff;border:0;display:block;" width="640"></a></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:#fff;color:#222;font-size:16px;line-height:150%;padding:0;text-align:left;font-family:Helvetica, Arial, sans-serif;border-bottom:0;border-top:0;" colspan="2" class="mainContent"><p>Here are five of the week&#39;s most interesting tracks on&nbsp;<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=e792735517&e=6626bc0426">Hype Machine</a>.</p>
+
+<center><a class="cta" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=2e61928625&e=6626bc0426" style="font-size: 20px;display: block;padding: 20px 15px;background-color: #83c441;color: #ffffff;text-decoration: none;width: 200px;text-align: center;border-radius: 32px;">Listen now &rarr;</a></center>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #CB4427;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=c8547ebc52&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">The Maghreban - Revenge (feat. Rutendo Machiridza)</a></strong><br>
+British producer Ayman Rostom&#39;s debut album under his house music alias is an imaginative tapestry of Afrobeat rhythms, dub grooves, and blissful sampledelia. Here he connects with Zimbabwean vocalist and Mbira player Rutendo Machiridza.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #E6A77B;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=c086c7ba12&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Boy Pablo - Losing You</a></strong><br>
+Following a sudden YouTube hit in 2017, this Norwegian bedroom pop band of high school friends led by Pablo Mu&ntilde;oz have sold out shows in Europe and head next to the US. Their latest is a bubbly breakup song.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #FBC000;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=dff2f27d81&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Jean Deaux - Energy (prod. by ROMderful)</a></strong><br>
+The rising Chicago vocalist and Saba/Smino collaborator dismisses unwanted energy here over production from Soulection&#39;s Romderful: &quot;Neptunes-colored spritz of hand drums, claps, bells, and fat synth bass,&quot; per <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d3ea48d4b7&e=6626bc0426">Passion of The Weiss</a>.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #F1693F;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=6c4d03dccb&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Tanukichan - Lazy Love</a></strong><br>
+Last featured on Toro Y Moi&#39;s <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=b4abd4e34e&e=6626bc0426">Stack</a>, Bay Area musician Hannah van Loon is readying her debut LP on Chaz&#39;s label Company Records. Judging by &quot;Lazy Love,&quot; it&#39;ll be a shimmering mix of introspective songwriting and shoegaze riffs.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #FFF393;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=847ae1f9f6&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">MUNYA - Des Bisous Partout</a></strong><br>
+The &quot;dreamy, gently sun-warped French indie-pop&quot; of Montreal-based singer/producer Josianne Boivin, aka MUNYA, is a recent discovery on <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=07b6456c76&e=6626bc0426">Gorilla Vs. Bear</a>. Last week she self-released a mini-EP called <em>North Hatley</em>.</p>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/422e504f-b469-4bb5-84b4-28bd9d7439dc.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=c979f8f646&e=6626bc0426"><img class="premiere-image" src="https://artwork.hypem.com/premieres/crop_featured/hitbargain.jpg" style="width: 640px; margin: 0px;" width="640"></a> <em><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d7e57a7336&e=6626bc0426">Potential Maximizer</a></em>, the new album from Los Angeles punk band Hit Bargain.<br>
+<br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=9d42c4815a&e=6626bc0426"><img class="premiere-image" src="https://artwork.hypem.com/premieres/crop_featured/yours.jpg" style="width: 640px; margin: 0px;" width="640"></a> <em><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=ffbdc57e92&e=6626bc0426">Knock Hard</a></em>, the new album from New York folk songwriter Yours Are the Only Ears.<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/db6dcec6-0816-44a7-a3d9-be10b7cfd501.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+R&amp;S-signed producer The Maghreban (above) makes Dekmantel a &quot;masterful mega <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a21e6b8212&e=6626bc0426">mix</a> of sounds and scenes and styles [from cosmic disco to horror soundtracks] that really shouldn&rsquo;t go together, but they do.&quot;<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/b2241785-cbab-4c56-bd9c-b894477b81d7.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+Ta-Nehisi Coates for <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a55040fea8&e=6626bc0426">The Atlantic</a> on Kanye West in the age of Donald Trump:<br>
+<br>
+<span class="quote" style="font-weight: bold;">&quot;Kurt Cobain&rsquo;s death was a great tragedy for his legions of fans. Tupac&rsquo;s was a tragedy for an entire people. When brilliant black artists fall down on the stage, they don&rsquo;t fall down alone.&quot;</span><br>
+<br>
+Thanks for listening!<br>
+<br>
+- Dave &amp; Team Hype Machine
+<p><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=846a8b7cb3&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/anthony.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=04ca5943e5&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/zoya.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=b99dc01b27&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/dave.jpg" style="background-color:#666;" width="40"></a></p>
+By the way, we&#39;ve also made <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=c9462a1234&e=6626bc0426" target="_blank">Spotify</a> and <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=17bf2a8766&e=6626bc0426" target="_blank">SoundCloud</a> playlists with all of the recent Stack picks. Check them out, though the newest tracks are still only in this email.
+
+<p>&nbsp;</p>
+
+<p style="border-top: 3px solid #83c441;padding-top:15px;">ps. If you&#39;re feeling this, forward it on :)</p>
+</td>
+                </tr>
+              </table>
+            </center>
+            <table width="640" border="0" cellpadding="0" cellspacing="0" style="border-top:3px solid #85C442;">
+              <tr>
+                <td style="font-size:14px;line-height:150%;font-family:Helvetica, Arial, sans-serif;color:#111;text-align:left;" class="footerContent"><p>This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn, NY 11222
+USA.<br>
+                                                <a href="https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=7a7fcd356c">Unsubscribe</a> with one click.</p></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </div>
+<img src="https://hypem.us7.list-manage.com/track/open.php?u=e9e17a06a5cc8fcbf10aaddf3&id=7a7fcd356c&e=6626bc0426" height="1" width="1"></body>
+</html>
+--_----------=_MCPart_2020624550--
