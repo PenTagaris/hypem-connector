@@ -1,5 +1,6 @@
 import re
 import sys
+import argparse
 from bs4 import BeautifulSoup
 from email import message_from_file
 from email.policy import default
@@ -29,9 +30,9 @@ def parse_email(email_file):
     return artist_title
 
 def add_to_gmusic_playlist(search_list, 
-                            email = '', 
-                            password = '', 
-                            android_id = '3381268c3fa939d1', 
+                            email , 
+                            password, 
+                            android_id, 
                             playlist_id = 'b65f8c76-8ff7-41d1-a775-a3bfdc20920a'):
 
     #Instatiate the songId list
@@ -54,9 +55,15 @@ def add_to_gmusic_playlist(search_list,
 
 
 def main():
-    for arg in sys.argv[1:]:
-        search_list = parse_email(arg)
-        add_to_gmusic_playlist(search_list)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", "--email", type=str, help="The email address")
+    parser.add_argument("-p", "--password", type=str, help="The password")
+    parser.add_argument("-a", "--android_id", type=str, help="The android_id")
+    parser.add_argument("-f", "--file", type=str, help="The email file to parse")
+    args = parser.parse_args()
+
+    search_list = parse_email(args.file)
+    add_to_gmusic_playlist(search_list, args.email, args.password, args.android_id)
 
 if __name__ == "__main__":
     main()
