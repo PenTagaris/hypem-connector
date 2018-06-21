@@ -1,0 +1,329 @@
+Return-Path: <jstnchristian+caf_=hype-stack=christiannet.info@gmail.com>
+Received: from mail-io0-f174.google.com (mail-io0-f174.google.com [209.85.223.174])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id l8d40bsgapdl9u16eg313nqts81loctifllvjho1
+ for hype-stack@christiannet.info;
+ Fri, 08 Jun 2018 16:46:33 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.223.174 as permitted sender) client-ip=209.85.223.174; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f174.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.174 as permitted sender) client-ip=209.85.223.174; envelope-from=jstnchristian+caf_=hype-stack=christiannet.info@gmail.com; helo=mail-io0-f174.google.com;
+ dkim=pass header.i=@gmail.mcsv.net;
+ dkim=pass header.i=@hypem.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFHeGpuMnBOcUFsUjhaTWMxQy8rS3Zwd3FEWTloZmFLWDV0bFJ4T3R4cFJzMVBlM3RMY1ZBdnlUVVB5azVndXA4Z0dGSXdGZUZ6UE1OOE5MZUpPWVhncEhFeTFtVlFoL04rSyt6UzVKZG10ODRuU2pmalBRWlR1b3dhUTJNK1Zlb3FNTzF5NnVVSEFobUh2VldaVUhVeUpEV0czV05Zem9QZ3l4TTBabExWNG9IcXJZbUlKNkpuYlQ5V1ZxeEpuODFrdnYxanRMb295cXlKY0dacnFGSFNtUHZrVlYzMWFObUJJTEFTM01qSTdxM1poUlkrelRQd0kxQjJTUDZYTVhCVERLeSs5a2V6YUlJQnNUcXBqZlpVK2JsL0FPM25qUWtUWlFCK1JSOFN5YjZpU3IwaEdkUzVLelZibVBPZFA3YWVEV3k4YUNkc2xPblpWaWlrVkhEQW4=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=YIRunkS88/P/BuKRjDhz7pRzdn4jaGrxMaYvICilIHfX6sSsTzleUNzBsXZn95ERwNhRfekuT6N32jtpN5X7W/WjASMhh5/0tv6tKvIFGWQzJuuQqQfVFy5TSRnVGODEmGSgsyJYvrRCphDZXp/I8vwEdtlpNXhVYGYjNpnnYHA=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1528476393; v=1; bh=RzH5//OMryxHwZsVuL11dVJRoEvkdUAqZ6jBTqAr6EU=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-io0-f174.google.com with SMTP id l19-v6so16617087ioj.5
+        for <hype-stack@christiannet.info>; Fri, 08 Jun 2018 09:46:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :subject:from:reply-to:to:date:message-id:feedback-id:list-id
+         :precedence:list-unsubscribe:list-unsubscribe-post:mime-version;
+        bh=oV1dK4PFjy8O947Le3X1yNg4dvFzXPFLu2n+/fdSL4g=;
+        b=Y++IULNN0zEqJOZ4KvSpZ4gc2kQ3mQjGocNysXgThei7Nm9W/uBCNz56cqoeAFHpv2
+         MFGeqRNjBOAqAwYgerAjzdMQ2EfYOzSEuVb3SH9ayNL7DpjsQALw4g/xLO5Qs/5jTVdB
+         T7nvE2P8XEt1FnjthF/n7HemY28SdDDrwBy0sFNT3SJ9cLer+DZpPChNyP/sj2Kytu2a
+         EMQJPW5UM4QZNSTU2Ga5x8yqRlrOokn/8BZOTzOrPQBPNJhDEUgb2jUiolS8OyPkE3sR
+         ecJtqWoJiqcATWqqeZr32V599Bo6kWog3GhDm5VE8NNcwDaMgYkMZKWF6yDP7RRXdVdE
+         JWVA==
+X-Gm-Message-State: APt69E3U3xfyPxF8GqFk9wAvHjK1GqMgn/GEwI1KRtKR6dZHcaqS8+f8
+	J315rZtWmZGSiXXk50+YzBD1r7KDp0h3uzedIGiICpneCpr6yEM=
+X-Received: by 2002:a6b:2b10:: with SMTP id r16-v6mr5827198ior.204.1528476392504;
+        Fri, 08 Jun 2018 09:46:32 -0700 (PDT)
+X-Forwarded-To: hype-stack@christiannet.info
+X-Forwarded-For: jstnchristian@gmail.com hype-stack@christiannet.info
+Delivered-To: jstnchristian@gmail.com
+Received: by 2002:a02:158d:0:0:0:0:0 with SMTP id 13-v6csp1090651jaq;
+        Fri, 8 Jun 2018 09:46:31 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLxnhbmLVIRSvi0YlWtpFP1bTBNaIal+OBdEoGIg0K0jHY8Ik+8nn1Cn3dxteUiClaT3QKh
+X-Received: by 2002:a81:cb0c:: with SMTP id q12-v6mr4129357ywi.5.1528476390944;
+        Fri, 08 Jun 2018 09:46:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528476390; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qSwPgfUTxuU/dX4S7UrL7oQrrgDYGAeGdhtYEgoJZ6lpB0kAQVeZTANnAYDannru5T
+         Bdg0UB8K8e2cvKUoQnohSi036pDWGSZw9XeBG5L2raJDYIzDGvP76tJpaEToj7sxpdxe
+         /WtcA+ZkleQcMSYQO+r3a2IBpBh/pzhEcIwOccc54dGQPZsVikbkBx/x4jXLjE5hcpJz
+         /ZkAv7yWlS3Dmfr5/VwCpx4hZoQb5m8KCls9vcjmI1/O3VoqpstVcWUJgVoSGL2U0EYJ
+         o9ScvIjlbVl7NQSHIWx40X4liTNxDcwGCbV7keiM5ov1SKD3rUOTsfBoMhn3YqVgTwVu
+         3x4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:precedence
+         :list-id:feedback-id:message-id:date:to:reply-to:from:subject
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=oV1dK4PFjy8O947Le3X1yNg4dvFzXPFLu2n+/fdSL4g=;
+        b=omW7RSF4wKkprFvPQmMOTMujw8K42Yd6kcPWRNNtvHFhDp6/gmmtYlovnlBvH3JzQN
+         OjbyJQrjuCCQ9BDv1qbc1aoigSNYBSv8a5ttmRzBTFl3uaPIBGFrxrpcgKw62ju91KXW
+         Uv21vjOPYFSsPJCM0Un9UOnZBqY3awA11estTom9wO/HEHJtOGIWd87G5hWDGFPTMHbG
+         SC7sgkkEvvqW1mbmyx+KJX14pUE16pLAvtuewLLLwRqKs136LsLZVt/EQUGwZGUAzzHk
+         /IPSq7EbMzYN8YG9sA9vzxM9Z31njOCIxMMc1A1gPJaXCWOF6gNgWoF6UboYTs1kRECD
+         zQ8w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=T2hq504C;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=ij77M1Mt;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net designates 148.105.14.237 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+Return-Path: <bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net>
+Received: from mail237.sea81.mcsv.net (mail237.sea81.mcsv.net. [148.105.14.237])
+        by mx.google.com with ESMTPS id o6-v6si828734ybm.570.2018.06.08.09.46.30
+        for <jstnchristian@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Jun 2018 09:46:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net designates 148.105.14.237 as permitted sender) client-ip=148.105.14.237;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hypem.com header.s=k1 header.b=T2hq504C;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=ij77M1Mt;
+       spf=pass (google.com: domain of bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net designates 148.105.14.237 as permitted sender) smtp.mailfrom=bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hypem.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=hypem.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=hello@hypem.com;
+ bh=oV1dK4PFjy8O947Le3X1yNg4dvFzXPFLu2n+/fdSL4g=;
+ b=T2hq504CHKaF92Sf0MB50JifRdE30A8p06bGe0x7sdYdmJdufE+WmNFgEiERMgZ9OxTk/ZkPheQP
+   o/SN8neQSzjU/YOg+f5pzhkzCzEiO20+gUBhEzW8pOnCvHp+T4RkQJlvbUhqzxVZRdYk41E6ioj1
+   I+CVLEvic+sCfQYJ6lA=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=oV1dK4PFjy8O947Le3X1yNg4dvFzXPFLu2n+/fdSL4g=;
+ b=ij77M1MtEdSUC2FpK0K5eqT4zytIv/U7BRuX4aqpCbRBwpJHFH2RO2fUMZdbEQ+BzyKLnR4GjmFT
+   QFq0nQUa2pFgB+5c0pPdqgPjBkZ6Y+UkNCpwxUZSJO3+ccJmSofYtNiym0bFyI/4F8hNUITa4u57
+   MtbWVoOstHnnMpzOM5o=
+Received: from (127.0.0.1) by mail237.sea81.mcsv.net id h3apec2ddl4g for <jstnchristian@gmail.com>; Fri, 8 Jun 2018 16:46:07 +0000 (envelope-from <bounce-mc.us7_18415043.807913-jstnchristian=gmail.com@mail237.sea81.mcsv.net>)
+Subject: =?utf-8?Q?=F0=9F=8E=B9=C2=A0Stack=20=E2=84=96191=20with=20Stones=20Throw=27s=C2=A0Kiefer?=
+From: =?utf-8?Q?Hype=20Machine?= <hello@hypem.com>
+Reply-To:  <us7-874bbefcd0-e1ecfb9e91@conversation01.mailchimpapp.com>
+To: <jstnchristian@gmail.com>
+Date: Fri, 8 Jun 2018 16:46:07 +0000
+Message-ID: <e9e17a06a5cc8fcbf10aaddf3.6626bc0426.20180608164449.baacac771b.addbce71@mail237.sea81.mcsv.net>
+X-Mailer: MailChimp Mailer - **CIDbaacac771b6626bc0426**
+X-Campaign: mailchimpe9e17a06a5cc8fcbf10aaddf3.baacac771b
+X-campaignid: mailchimpe9e17a06a5cc8fcbf10aaddf3.baacac771b
+X-Report-Abuse: Please report abuse for this campaign here: http://www.mailchimp.com/abuse/abuse.phtml?u=e9e17a06a5cc8fcbf10aaddf3&id=baacac771b&e=6626bc0426
+X-MC-User: e9e17a06a5cc8fcbf10aaddf3
+Feedback-ID: 18415043:18415043.807913:us7:mc
+List-ID: e9e17a06a5cc8fcbf10aaddf3mc list <e9e17a06a5cc8fcbf10aaddf3.220065.list-id.mcsv.net>
+Precedence: bulk
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Accounttype: pd
+List-Unsubscribe: <https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=baacac771b>, <mailto:unsubscribe-mc.us7_e9e17a06a5cc8fcbf10aaddf3.baacac771b-6626bc0426@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-mcda: FALSE
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_53562925"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_53562925
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+ (http://hypem.com/stack)
+ Five tracks of the week from Hype Machine (https://hypem.com/stack/191?vi=
+a=3Demail)
+
+This Stack was handpicked by LA-based pianist and producer Kiefer (https:/=
+/hypem.com/artist/kiefer) . His debut LP=2C Happysad=2C which he describes=
+ as an =E2=80=9Cemotional journal=E2=80=9D of instrumentals straddling bea=
+ts and jazz=2C is out today on Stones Throw. Stream his selections on Hype=
+ Machine (https://hypem.com/stack/191?via=3Demail) .
+
+Listen now =E2=86=92 (https://hypem.com/stack/191?via=3Demail)
+
+Nick Dorian - Yawn (prod. Shibo) (https://hypem.com/stack/191?via=3Demail)
+"I had been listening to a lot of Jeff Buckley and felt compelled to write=
+ a song that had a similar emotional drive as So Real=2C" says LA songwrit=
+er Nick Dorian of this velvety-smooth indie pop cut from his debut EP.
+
+DJ Harrison - RollSkate/KalimbaTale (https://hypem.com/stack/191?via=3Dema=
+il)
+Richmond=2C VA's DJ Harrison will soon release HazyMoods=2C his debut with=
+ Stones Throw. The lead single "RollSkate/KalimbaTale" incorporates a pair=
+ of tracks from the late producer J Dilla=2C sampled and expanded with liv=
+e drums and keys.
+
+Kadhja Bonet - Delphine (https://hypem.com/stack/191?via=3Demail)
+Arriving today on Fat Possum=2C the soulful=2C psychedelic new album from=
+ LA-based multi-instrumentalist=2C singer=2C songwriter=2C and producer Ka=
+dhja Bonet has range. "Delphine" displays the minimal=2C dreamy side of it=
+s spectrum.
+
+Lou Phelps - What Time Is It? (feat. Innanet James)(Prod. By KAYTRANADA) (=
+https://hypem.com/stack/191?via=3Demail)
+Released in April=2C the debut project from this Montreal MC features two=
+ tracks produced by his brother. Lou's laid-back flow pairs well with Kay'=
+s feel-good beats on this one=2C a "frenetic funk flip" (Okayplayer (http:=
+//www.okayplayer.com/audio/lou-phelps-kaytranada-what-time-is-it-mp3.html)=
+ ) featuring Maryland's Innanet James.
+
+Mac Ayres - Lonely (https://hypem.com/stack/191?via=3Demail)
+Since we last featured Sea Cliff=2C NY songwriter Mac Aryes=2C his EP on F=
+=C3=AAte Records has continued to spread=2C "feeling like a necessary brea=
+th of fresh air=2C" says Pigeons and Planes (https://pigeonsandplanes.com/=
+discover/2017/08/mac-ayres-drive-slow-ep-discover) =2C "blending elements=
+ of soul=2C R&B=2C jazz=2C and hip-hop."
+https://hypem.com/premiere/exhibitionist Let Go of Love (https://hypem.com=
+/premiere/exhibitionist) =2C the debut EP from Sidney-based electronic pop=
+ project Exhibitionist.
+
+Here's a Soulection Radio mix (https://soundcloud.com/soulection/soulectio=
+n-radio-show-304-ft-kiefer) of "future beats=2C eclectic soul=2C and timel=
+ess sounds" featuring a set from today's Stack curator=2C Kiefer.
+
+From the Rolling Stone (https://www.rollingstone.com/music/features/martha=
+-wash-most-famous-unknown-singer-of-the-90s-20140902) archives: Martha Was=
+h=2C the most famous unknown singer of the '90s:
+
+"I said to myself=2C 'I don't believe this shit is happening again=2C" say=
+s the now 60-year-old Wash. 'I just heard myself on TV in a video.'"
+
+Thanks for listening!
+
+- Dave & Team Hype Machine
+
+http://hypem.com/anthony http://hypem.com/zoya http://hypem.com/stadiumssh=
+rines
+By the way=2C we've also made Spotify (https://open.spotify.com/user/hypem=
+/playlist/0uBPGiDY93DpfRBAzTfkTp) and SoundCloud (https://soundcloud.com/h=
+ypem/sets/stack) playlists with all of the recent Stack picks. Check them=
+ out=2C though the newest tracks are still only in this email.
+
+
+ps. If you're feeling this=2C forward it on :)
+
+This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn=2C NY 11222
+USA.
+Unsubscribe (https://hypem.us7.list-manage.com/unsubscribe?u=3De9e17a06a5c=
+c8fcbf10aaddf3&id=3D28a82e4150&e=3D6626bc0426&c=3Dbaacac771b) with one click=
+=2E
+--_----------=_MCPart_53562925
+Content-Type: text/html; charset="us-ascii"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>🎹 Stack №191 with Stones Throw's Kiefer</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=640, maximum-scale=2">
+    
+  <style type="text/css">
+		.cta{
+			font-size:20px;
+			display:block;
+			padding:20px 15px;
+			background-color:#83c441;
+			color:#ffffff;
+			text-decoration:none;
+			width:200px;
+			text-align:center;
+			border-radius:32px;
+		}
+		.quote{
+			font-weight:bold;
+		}
+		.track_desc{
+			border-left-width:20px;
+			padding-left:10px;
+		}
+	@media only screen and (max-width: 480px){
+		.headerContent,.mainContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.footerContent{
+			font-size:32px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.cta{
+			font-size:32px !important;
+			padding:25px 20px !important;
+			width:300px !important;
+			border-radius:45px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.track_desc{
+			border-left-width:30px !important;
+			padding-left:20px !important;
+		}
+
+}</style></head>
+  <body bgcolor="#fff" link="#0063dc" alink="#0063dc" vlink="#0063dc" style="text-align: left;">
+    <div style="width:100%;max-width:640px;background-color:#fff;padding:20px 0 0 0;">
+      <center>
+        <table cellpadding="0" cellspacing="0" border="0" width="640">
+          <tr>
+            <td style="padding-bottom:30px;text-align:left;" class="headerContent">
+              <center>
+                <table width="640" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="text-align:left;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#111;border-bottom:0;" colspan="2">
+                      <a target="_blank" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=bc1bfce76f&e=6626bc0426">
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d6ec98eb04&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280_thanks.png" style="width:640px;height:75px;background-color:#f9da35;border:0;display:block;" width="640">
+ 
+<a alt="Five tracks of the week from Hype Machine" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=90e1842185&e=6626bc0426" style="margin:0;"><img src="https://artwork.hypem.com/stack/stack_1280.png" style="width:640px;height:125px;background-color:#fff;border:0;display:block;" width="640"></a></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:#fff;color:#222;font-size:16px;line-height:150%;padding:0;text-align:left;font-family:Helvetica, Arial, sans-serif;border-bottom:0;border-top:0;" colspan="2" class="mainContent"><p>This Stack was handpicked by LA-based pianist and producer <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=0367d832ad&e=6626bc0426">Kiefer</a>. His debut LP, <em>Happysad</em>, which he describes as an &ldquo;emotional journal&rdquo; of instrumentals straddling beats and jazz, is out today on Stones Throw. Stream his selections on&nbsp;<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=a7df05acb7&e=6626bc0426">Hype Machine</a>.</p>
+
+<center><a class="cta" href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=c1e4a011f3&e=6626bc0426" style="font-size: 20px;display: block;padding: 20px 15px;background-color: #83c441;color: #ffffff;text-decoration: none;width: 200px;text-align: center;border-radius: 32px;">Listen now &rarr;</a></center>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #FF0101;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d5fe7a2ac9&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Nick Dorian - Yawn (prod. Shibo)</a></strong><br>
+"I had been listening to a lot of Jeff Buckley and felt compelled to write a song that had a similar emotional drive as So Real," says LA songwriter Nick Dorian of this velvety-smooth indie pop cut from his debut EP. </p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #FF0049;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=ec1b7c72c1&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">DJ Harrison - RollSkate/KalimbaTale</a></strong><br>
+Richmond, VA&#39;s DJ Harrison will soon release <em>HazyMoods</em>, his debut with Stones Throw. The lead single &quot;RollSkate/KalimbaTale&quot; incorporates a pair of tracks from the late producer J Dilla, sampled and expanded with live drums and keys.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #EBB670;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=fe8954b32a&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Kadhja Bonet - Delphine</a></strong><br>
+Arriving today on Fat Possum, the soulful, psychedelic new album from LA-based multi-instrumentalist, singer, songwriter, and producer Kadhja Bonet has range. &quot;Delphine&quot; displays the minimal, dreamy side of its spectrum.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #11A0D8;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=002dd2a26e&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Lou Phelps - What Time Is It? (feat. Innanet James)(Prod. By KAYTRANADA)</a></strong><br>
+Released in April, the debut project from this Montreal MC features two tracks produced by his brother. Lou&#39;s laid-back flow pairs well with Kay&#39;s feel-good beats on this one, a &quot;frenetic funk flip&quot; (<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=9399bacb0d&e=6626bc0426">Okayplayer</a>) featuring Maryland&#39;s Innanet James.</p>
+
+<p class="track_desc" style="border-left-style: solid;border-left-color: #458AA7;border-left-width: 20px;padding-left: 10px;"><strong><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=6ccc6e58d7&e=6626bc0426" style="color:#000;text-decoration:none;" target="_blank">Mac Ayres - Lonely</a></strong><br>
+Since we last featured Sea Cliff, NY songwriter Mac Aryes, his EP on F&ecirc;te Records has continued to spread, &quot;feeling like a necessary breath of fresh air,&quot; says <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=9e810895fd&e=6626bc0426">Pigeons and Planes</a>, &quot;blending elements of soul, R&amp;B, jazz, and hip-hop.&quot;</p>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/422e504f-b469-4bb5-84b4-28bd9d7439dc.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+<a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=02799d75a8&e=6626bc0426"><img class="premiere-image" src="https://artwork.hypem.com/premieres/crop_featured/exhibitionist.jpg" style="width: 640px; margin: 0px;" width="640"></a> <em><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=581d83ba48&e=6626bc0426">Let Go of Love</a></em>, the debut EP from Sidney-based electronic pop project Exhibitionist.<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/db6dcec6-0816-44a7-a3d9-be10b7cfd501.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+Here&#39;s a Soulection Radio <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=d847dd7d52&e=6626bc0426">mix</a> of &quot;future beats, eclectic soul, and timeless sounds&quot; featuring a set from today&#39;s Stack curator, Kiefer.<br>
+<br>
+<img align="none" height="51" src="https://gallery.mailchimp.com/e9e17a06a5cc8fcbf10aaddf3/images/b2241785-cbab-4c56-bd9c-b894477b81d7.png" style="width: 640px; height: 51px; margin: 0px;" width="640"><br>
+From the <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=1dc9b005fc&e=6626bc0426">Rolling Stone</a> archives: Martha Wash, the most famous unknown singer of the &#39;90s:<br>
+<br>
+<span class="quote" style="font-weight: bold;">&quot;I said to myself, &#39;I don&#39;t believe this shit is happening again,&quot; says the now 60-year-old Wash. &#39;I just heard myself on TV in a video.&#39;&quot;</span><br>
+<br>
+Thanks for listening!<br>
+<br>
+- Dave &amp; Team Hype Machine
+<p><a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=21a5a36a8e&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/anthony.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=3dca092cab&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/zoya.jpg" style="background-color:#666;" width="40"></a> <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=2bfaa204e6&e=6626bc0426" target="_blank"><img height="40" src="https://artwork.hypem.com/stack/dave.jpg" style="background-color:#666;" width="40"></a></p>
+By the way, we&#39;ve also made <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=94cc776e72&e=6626bc0426" target="_blank">Spotify</a> and <a href="https://hypem.us7.list-manage.com/track/click?u=e9e17a06a5cc8fcbf10aaddf3&id=ca4b72da70&e=6626bc0426" target="_blank">SoundCloud</a> playlists with all of the recent Stack picks. Check them out, though the newest tracks are still only in this email.
+
+<p>&nbsp;</p>
+
+<p style="border-top: 3px solid #83c441;padding-top:15px;">ps. If you&#39;re feeling this, forward it on :)</p>
+</td>
+                </tr>
+              </table>
+            </center>
+            <table width="640" border="0" cellpadding="0" cellspacing="0" style="border-top:3px solid #85C442;">
+              <tr>
+                <td style="font-size:14px;line-height:150%;font-family:Helvetica, Arial, sans-serif;color:#111;text-align:left;" class="footerContent"><p>This email was sent to you by Hype Machine
+161 Engert Ave Suite 2R
+Brooklyn, NY 11222
+USA.<br>
+                                                <a href="https://hypem.us7.list-manage.com/unsubscribe?u=e9e17a06a5cc8fcbf10aaddf3&id=28a82e4150&e=6626bc0426&c=baacac771b">Unsubscribe</a> with one click.</p></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </div>
+<img src="https://hypem.us7.list-manage.com/track/open.php?u=e9e17a06a5cc8fcbf10aaddf3&id=baacac771b&e=6626bc0426" height="1" width="1"></body>
+</html>
+--_----------=_MCPart_53562925--
