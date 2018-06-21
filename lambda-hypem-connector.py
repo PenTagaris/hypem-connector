@@ -30,12 +30,12 @@ def parse_email(email_file):
                 temp = '{} {}'.format(mo[0][0], mo[0][1])
                 artist_title.append(temp.split('(', 1)[0].lower().rstrip())
 
-        print("I found some songs and such: {}".format(artist_title))
-        return artist_title
-
     except Exception as e:
         print("Looks like no HTML here, boss. Dying.")
         raise
+
+    finally:
+        return artist_title
 
 def add_to_gmusic_playlist(search_list, 
                             email , 
@@ -43,16 +43,18 @@ def add_to_gmusic_playlist(search_list,
                             android_id, 
                             playlist_id):
 
-    #Instatiate the songId list
+    #Instatiate the songId list and the results
     song_ids = []
+    append_results = []
 
     #Log in
     api = Mobileclient()
+
     try:
         logged_in = api.login(email, password, android_id)
+
     except Exception as e:
         print("Doesn't look like we were able to log in. Sucks.")
-        print(e)
         raise
 
     #start searching through the search list. Append IDs to song_ids
@@ -65,26 +67,31 @@ def add_to_gmusic_playlist(search_list,
     print ("Song IDs found: {}".format(song_ids))
     #Add songs to the playlist
     try:
-        result = api.add_songs_to_playlist(playlist_id, song_ids)
-        api.logout()
-        return (result)
+        append_results = api.add_songs_to_playlist(playlist_id, song_ids)
+        return append_results
+
     except Exception as d:
         print("Adding songs to the playlist didn't work.")
-        print(d)
         raise
+
+    #Logout regardless of what happens
+    finally:
+        api.logout()
+
 
 def lambda_main(event, context):
     s3_client = boto3.client('s3')
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
-        #make key equal to the last string, and change switch / to __ 
-        #this fixes an issue where lambda wasn't able to see the file
+        #Change '/' in the keyname to '__'. This is a hacky fix,
+        #but since these files are going into oblivion, I don't much care
         key = record['s3']['object']['key']
         download_key = key.replace('/','__')
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), download_key) 
         s3_client.download_file(bucket, key, download_path)
 
     search_list = parse_email(download_path)
+    print ('List of songs found: {}'.format(search_list))
 
     #Note that putting the decryption here *should* result in it being run only
     #once per container
@@ -97,11 +104,13 @@ def lambda_main(event, context):
     DECRYPTED_PLAYLIST = boto3.client('kms').decrypt(
             CiphertextBlob=b64decode(os.environ['playlist']))['Plaintext']
 
-    add_to_gmusic_playlist(search_list, 
+    #KMS b64decode results in a binary blob. Decode to utf-8.
+    results = add_to_gmusic_playlist(search_list, 
 			    DECRYPTED_EMAIL.decode("utf-8"), 
 			    DECRYPTED_PASSWORD.decode("utf-8"),
                             DECRYPTED_ANDROID.decode("utf-8"),
                             DECRYPTED_PLAYLIST.decode("utf-8"))
+    return results
 
 def main():
     import argparse
