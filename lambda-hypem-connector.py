@@ -45,7 +45,9 @@ def add_to_gmusic_playlist(search_list,
 
     #Instatiate the songId list and the results
     song_ids = []
+    results = []
     append_results = []
+    reorder_results = []
 
     #Log in
     api = Mobileclient()
@@ -67,17 +69,39 @@ def add_to_gmusic_playlist(search_list,
     print ("Song IDs found: {}".format(song_ids))
     #Add songs to the playlist
     try:
+        
         append_results = api.add_songs_to_playlist(playlist_id, song_ids)
-        return append_results
-
+        results.append(append_results)
     except Exception as d:
-        print("Adding songs to the playlist didn't work.")
+        print("Adding songs to the playlist didn't work: {}".format(d))
         raise
 
-    #Logout regardless of what happens
-    finally:
-        api.logout()
+    try:
+        reorder_results = reorder_playlist(append_results, api, playlist_id)
+        results.append(reorder_results)
 
+    except Exception as e:
+        print ("Reordering the playlist didn't work: {}".format(e))
+        raise
+                                            
+    #Logout regardless of what happens
+    #finally:
+    #    return results
+    #    api.logout()
+
+def reorder_playlist(append_results, api, playlist_id):
+    reorder_results = []
+    playlists = api.get_all_user_playlist_contents()
+    for playlist in playlists:
+        if (playlist['id'] == playlist_id):
+            print("Playlist found")
+            while playlist['tracks'][-1]['id'] in append_results:
+                print("Moving {} to the top".format(playlist['tracks'][-1]['track']['title']))
+                api.reorder_playlist_entry(playlist['tracks'][-1], 
+                                         to_precede_entry=playlist['tracks'][0])
+                del playlist['tracks'][-1]
+                print("{} is now at the bottom".format(playlist['tracks'][-1]['track']['title']))
+    return reorder_results
 
 def lambda_main(event, context):
     s3_client = boto3.client('s3')
@@ -129,11 +153,11 @@ def main():
         return 128
 
     try:
-        add_to_gmusic_playlist(search_list, 
+        print(add_to_gmusic_playlist(search_list, 
                                     args.email, 
                                     args.password, 
                                     args.android_id,
-                                    args.playlist)
+                                    args.playlist))
     except Exception as playlist_exception:
         print(playlist_exception)
         return 128
